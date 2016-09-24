@@ -20,6 +20,8 @@
     <main class="container">
         <?php displayCocktail("Test de fou", "Description troll",
         "static/img/Black_velvet.jpg"); ?>
+        <?php displayCocktail("Black Velvet", "Le black velvet, miam",
+        "static/img/Black_velvet.jpg"); ?>
     </main>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
