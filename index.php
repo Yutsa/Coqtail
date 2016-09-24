@@ -1,3 +1,4 @@
+<?php include_once("examples/cocktail_card.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,11 @@
 <body>
 
     <?php include_once("core/menu.inc.php"); ?>
+
+    <main class="container">
+        <?php displayCocktail("Test de fou", "Description troll",
+        "static/img/Black_velvet.jpg"); ?>
+    </main>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="static/js/materialize.min.js"></script>
