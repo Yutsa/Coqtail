@@ -1,5 +1,5 @@
 <?php
-    $connected = false;
+    $connected = true;
  ?>
 <nav class="indigo darken-3">
         <div class="nav-wrapper">

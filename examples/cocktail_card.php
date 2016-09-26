@@ -23,7 +23,7 @@ function displayCocktail($cocktail_name, $cocktail_description, $cocktail_image)
                         </p>
                     </div>
                     <div class='card-action'>
-                        <a href='#'>Ajouter au panier</a>
+                        <a href='#'><span class="blue-text">Ajouter au panier prout</span></a>
                     </div>
                 </div>
             </div>
