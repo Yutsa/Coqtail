@@ -1,10 +1,17 @@
-<?php include_once("examples/cocktail_card.php"); ?>
+<?php 
+include_once("examples/cocktail_card.php"); 
+include_once("core/favicon.inc.php"); 
+include_once("core/donnees.inc.php"); 
+include_once("core/functions.inc.php"); 
+include_once("core/menu.inc.php"); 
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
     <title>Coq'tail</title>
-    <?php include_once("core/favicon.inc.php"); ?>
+    
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -15,7 +22,31 @@
 </head>
 <body>
 
-    <?php include_once("core/menu.inc.php"); ?>
+    <?php
+
+    
+    $KeysHierarchie = array_keys($Hierarchie);
+    $i = -1;
+    foreach ($Hierarchie as $Aliment) {
+        $i ++;
+        if (!array_key_exists('super-categorie', $Aliment)) {
+            $Racine = $KeysHierarchie[$i];
+            echo('-> ' . $KeysHierarchie[$i]. '<br />');
+        }
+    }
+    
+//    foreach ($Hierarchie[$Racine] as $SousCategories) {
+//        foreach ($SousCategories as $SousCategorie) {
+//            echo('L__ ' . $SousCategorie . '<br />');
+//        }
+//    }
+    
+    $SousCategories = GetSousCategories($Racine);
+        foreach ($SousCategories as $SousCategorie) {
+            echo('L__ ' . $SousCategorie . '<br />');
+        }
+    
+    ?>
 
     <main class="container">
         <?php displayCocktail("Test de fou", "Description troll",
