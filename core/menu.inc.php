@@ -1,8 +1,7 @@
 <?php
 $connected = false;
 ?>
-    $connected = false;
- ?>
+
 <nav class="indigo darken-3">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">Coq'tail</a>
@@ -16,14 +15,14 @@ $connected = false;
                 </form></li>
             <li><a href="#">Accueil</a></li>
             <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
-            <?php if (!$connected) {
-    echo "<li><a href='#'>Se connecter</a></li>\n";
-    echo "\t\t\t\t<li><a href='#'>S'inscrire</a></li>\n";
-} ?>
+            <?php if (!$connected) { ?>
+                <li><a href='#'>Se connecter</a></li>
+                <li><a href='#'>S'inscrire</a></li>
+<?php } ?>
         </ul>
-        
-        
-    
+
+
+
         <ul id="slide-out" class="side-nav black-text">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
@@ -49,4 +48,3 @@ $connected = false;
 
     </div>
 </nav>
-
