@@ -1,5 +1,5 @@
 <?php
-    $connected = true;
+    $connected = false;
  ?>
 <nav class="indigo darken-3">
         <div class="nav-wrapper">
@@ -14,10 +14,10 @@
                 </form></li>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#" data-activates="mobile-demo" class="ingredients">Parcourir Ingrédients</a></li>
-                <?php if (!$connected) {
-                    echo "<li><a href='#'>Se connecter</a></li>\n";
-                    echo "\t\t\t\t<li><a href='#'>S'inscrire</a></li>\n";
-                } ?>
+                <?php if (!$connected) { ?>
+                    <li><a href='#'>Se connecter</a></li>
+                    <li><a href='#'>S'inscrire</a></li>
+                <?php } ?>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="sass.html">Michel</a></li>
