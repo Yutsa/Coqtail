@@ -35,16 +35,18 @@ include_once("core/menu.inc.php");
         }
     }
     
+    Insert($Hierarchie);
+    
 //    foreach ($Hierarchie[$Racine] as $SousCategories) {
 //        foreach ($SousCategories as $SousCategorie) {
 //            echo('L__ ' . $SousCategorie . '<br />');
 //        }
 //    }
     
-    $SousCategories = GetSousCategories($Racine);
-        foreach ($SousCategories as $SousCategorie) {
-            echo('L__ ' . $SousCategorie . '<br />');
-        }
+//    $SousCategories = GetSousCategories($Hierarchie, $Racine);
+//        foreach ($SousCategories as $SousCategorie) {
+//            echo('L__ ' . $SousCategorie . '<br />');
+//        }
     
     ?>
 
