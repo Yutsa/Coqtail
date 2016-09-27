@@ -1,0 +1,6 @@
+Utilisateurs: id_utilisateur, nom, sel, hash
+MET DANS PANIER, 0N Utilisateurs, 0N Cocktail
+Cocktail: id_cocktail, titre, ingrédients, préparation
+COMPOSER, 1N Ingrédients, 1N Cocktail
+Ingrédients: id_ingrédient, nom_ingrédient
+CATEGORIE, 0N Ingrédients, 0N [sous-catégorie] Ingrédients
