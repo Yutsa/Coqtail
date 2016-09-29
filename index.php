@@ -1,5 +1,4 @@
 <?php
-include_once("examples/cocktail_card.php");
 include_once("core/favicon.inc.php");
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
@@ -23,10 +22,13 @@ include_once("core/menu.inc.php");
 <body>
 
     <main class="container">
-        <?php displayCocktail("Test de fou", "Description troll",
-        "static/img/Black_velvet.jpg"); ?>
-        <?php displayCocktail("Black Velvet", "Le black velvet, miam",
-        "static/img/Black_velvet.jpg"); ?>
+        <?php
+            $recettes = getAllCocktailsWithIngredient("Malibu", $Hierarchie, $Recettes);
+            foreach($recettes as $recette)
+            {
+                displayCocktail($recette);
+            }
+         ?>
     </main>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
