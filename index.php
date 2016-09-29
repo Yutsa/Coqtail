@@ -34,6 +34,7 @@ include_once("core/menu.inc.php");
             echo('-> ' . $KeysHierarchie[$i]. '<br />');
         }
     }
+
     Insert($Hierarchie);
 
 
@@ -48,7 +49,7 @@ include_once("core/menu.inc.php");
 //        foreach ($SousCategories as $SousCategorie) {
 //            echo('L__ ' . $SousCategorie . '<br />');
 //        }
-    
+
     ?>
 
     <main class="container">
