@@ -41,10 +41,10 @@ function getAllSubcategories($searchedCategory, &$hierarchie, &$ingredientsArray
 function getAllCocktailsWithIngredient($ingredient, &$hierarchy, &$recettes)
 {
     $ingredients;
-    $ResRecettes;
     getAllSubcategories($ingredient, $hierarchy, $ingredients);
     foreach ($recettes as $recette) {
         foreach ($recette["index"] as $ingredientRecette) {
+                            print_r($ingredients);
             if (array_search($ingredient, $recette["index"]) !== false)
             {
                 $ResRecettes[] = $recette;

@@ -23,7 +23,7 @@ include_once("core/menu.inc.php");
 
     <main class="container">
         <?php
-            $recettes = getAllCocktailsWithIngredient("Malibu", $Hierarchie, $Recettes);
+            $recettes = getAllCocktailsWithIngredient("Épice", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
                 displayCocktail($recette);
