@@ -1,7 +1,7 @@
 <?php
 include_once("examples/cocktail_card.php");
 include_once("core/favicon.inc.php");
-include_once("core/donnees.inc.php"); 
+include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
 include_once("core/menu.inc.php");
 ?>
@@ -34,6 +34,8 @@ include_once("core/menu.inc.php");
             echo('-> ' . $KeysHierarchie[$i]. '<br />');
         }
     }
+    Insert($Hierarchie);
+
 
 //    foreach ($Hierarchie[$Racine] as $SousCategories) {
 //        foreach ($SousCategories as $SousCategorie) {
@@ -41,11 +43,12 @@ include_once("core/menu.inc.php");
 //        }
 //    }
 
-    $SousCategories = GetSousCategories($Racine);
-        foreach ($SousCategories as $SousCategorie) {
-            echo('L__ ' . $SousCategorie . '<br />');
-        }
 
+//    $SousCategories = GetSousCategories($Hierarchie, $Racine);
+//        foreach ($SousCategories as $SousCategorie) {
+//            echo('L__ ' . $SousCategorie . '<br />');
+//        }
+    
     ?>
 
     <main class="container">
