@@ -22,35 +22,6 @@ include_once("core/menu.inc.php");
 </head>
 <body>
 
-    <?php
-
-
-    $KeysHierarchie = array_keys($Hierarchie);
-    $i = -1;
-    foreach ($Hierarchie as $Aliment) {
-        $i ++;
-        if (!array_key_exists('super-categorie', $Aliment)) {
-            $Racine = $KeysHierarchie[$i];
-            echo('-> ' . $KeysHierarchie[$i]. '<br />');
-        }
-    }
-
-    Insert($Hierarchie);
-
-
-//    foreach ($Hierarchie[$Racine] as $SousCategories) {
-//        foreach ($SousCategories as $SousCategorie) {
-//            echo('L__ ' . $SousCategorie . '<br />');
-//        }
-//    }
-
-
-//    $SousCategories = GetSousCategories($Hierarchie, $Racine);
-//        foreach ($SousCategories as $SousCategorie) {
-//            echo('L__ ' . $SousCategorie . '<br />');
-//        }
-
-    ?>
 
     <main class="container">
         <?php displayCocktail("Test de fou", "Description troll",
