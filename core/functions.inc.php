@@ -35,4 +35,24 @@
             }
         }
     }
+
+    // Takes an ingredient and returns an array of all the
+    // cocktails containing this ingredients.
+    function getAllCocktailsWithIngredient($ingredient, &$hierarchy, &$recettes)
+    {
+        $ingredients;
+        $ResRecettes = array();
+        getAllSubcategories($ingredient, $hierarchy, $ingredients);
+        foreach ($recettes as $recette) {
+            foreach ($recette["index"] as $ingredientRecette) {
+                if (array_search($ingredient, $recette["index"]) !== false)
+                {
+                    $ResRecettes[] = $recette["titre"];
+                }
+            }
+        }
+
+        $ResRecettes = array_unique($ResRecettes);
+        return $ResRecettes;
+    }
 ?>

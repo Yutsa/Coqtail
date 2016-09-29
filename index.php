@@ -22,7 +22,6 @@ include_once("core/menu.inc.php");
 </head>
 <body>
 
-
     <main class="container">
         <?php displayCocktail("Test de fou", "Description troll",
         "static/img/Black_velvet.jpg"); ?>
