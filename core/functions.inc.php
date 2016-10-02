@@ -41,11 +41,15 @@ function getAllSubcategories($searchedCategory, &$hierarchie, &$ingredientsArray
 function getAllCocktailsWithIngredient($ingredient, &$hierarchy, &$recettes)
 {
     $ingredients;
+    // Gets all subcategories of $ingredient and stores it in $ingredients.
     getAllSubcategories($ingredient, $hierarchy, $ingredients);
+    // Iterates througs every $recettes to check if it has one of the
+    // selected $ingredients.
     foreach ($recettes as $recette) {
+        // Iterates through each $ingredientRecette of the current $recette
+        // to check if it's in the selected $ingredients.
         foreach ($recette["index"] as $ingredientRecette) {
-                            print_r($ingredients);
-            if (array_search($ingredient, $recette["index"]) !== false)
+            if (array_search($ingredientRecette, $ingredients) !== false)
             {
                 $ResRecettes[] = $recette;
             }
@@ -81,7 +85,7 @@ function displayCocktail($recette)
                             </p>
                         </div>
                         <div class='card-action'>
-                            <a href='#'><span class="blue-text">Ajouter au panier prout</span></a>
+                            <a href='#'><span class="blue-text">Ajouter au panier</span></a>
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,10 @@
 <?php
-include_once("core/favicon.inc.php");
+
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
-include_once("core/menu.inc.php");
+
 ?>
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,12 +17,13 @@ include_once("core/menu.inc.php");
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <?php include_once("core/favicon.inc.php"); ?>
 </head>
 <body>
-
+    <?php include_once("core/menu.inc.php"); ?>
     <main class="container">
         <?php
-            $recettes = getAllCocktailsWithIngredient("Épice", $Hierarchie, $Recettes);
+            $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
                 displayCocktail($recette);
