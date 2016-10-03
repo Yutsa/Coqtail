@@ -17,7 +17,7 @@ $connected = false;
             <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
             <?php if (!$connected) { ?>
                 <li><a href='#'>Se connecter</a></li>
-                <li><a href='#'>S'inscrire</a></li>
+                <li><a href='core/register_form.php'>S'inscrire</a></li>
 <?php } ?>
         </ul>
 
