@@ -10,7 +10,7 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <?php include_once("favicon.inc.php"); ?>
+    <?php include_once '../core/favicon.inc.php'; ?>
     </head>
     <body>
 
@@ -23,5 +23,6 @@
         <script type="text/javascript" src="static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="static/js/materialize.min.js"></script>
         <script src="static/js/custom.js" charset="utf-8"></script>
+        <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
     </body>
 </html>
