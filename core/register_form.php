@@ -1,7 +1,10 @@
 <?php
     // If the user is connected, this page should redirect to the home page.
+    $errorMessage = "";
     if (isset($_SESSION["username"]))
         header('Location: ../index.php');
+    if (isset($_POST["email"]))
+        include_once("register_user.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +21,15 @@
     <?php include_once '../core/favicon.inc.php'; ?>
     </head>
     <body>
-        <?php include_once 'menu.inc.php'?>
+        <?php include_once 'menu.inc.php' ?>
 
         <div class="container">
             <div class="row">
-                <form class="col s12" action="register_user.php" method="post">
+                <form class="col s12" action="#" method="post">
                     <div class="input-field col s6">
                         <input id="email" name="email" type="email" class="validate" required>
                         <label for="email">Email</label>
+                        <?= $errorMessage ?>
                     </div>
                     <div class="input-field col s6">
                         <input id="password" name="password" type="password" class="validate" required>
