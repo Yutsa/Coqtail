@@ -2,3 +2,4 @@
 *.pdf
 *.orig
 DS_STORE
+data/

@@ -18,13 +18,14 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     try
     {
         addEntryToAccountIndex($user["email"]);
+        $DataFilePath = "../data/" . $user["email"];
+        storeUserData($DataFilePath, $user);
+        header("Location: registration_success.php");
     }
     catch (Exception $e)
     {
-        $errorMessage = "Email already used.";
+        $errorMessage = "Adresse mail déjà utilisée.";
     }
-    $DataFilePath = "../data/" . $user["email"];
-    storeUserData($DataFilePath, $user);
 }
 
 /**
