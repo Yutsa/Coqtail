@@ -6,8 +6,19 @@ Réécrire les URL
 
 Réécrire les URL pour ne pas voir l'arboressence du site.
 
-Mieux gérer les includes
-=========================
+Créer le système de connexion
+==============================
 
-Utiliser un système pour avoir un lien absolu à partir de la racine du site
-au lieu d'utiliser que des liens relatifs par rapport à la page.
+Créer le système de paniers
+============================
+
+On doit pouvoir ajouter des articles au panier sans être connecté. Lorsque
+l'on se connecte ils s'ajoutent au panier du compte. Utilisation de cookies ?
+
+Les paniers des comptes doivent donc être stockés aussi.
+
+Créer le système de navigation d'ingrédients
+============================================
+
+Créer le "moteur de recherce"
+=============================
