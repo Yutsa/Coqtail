@@ -1,5 +1,6 @@
 <?php
 $connected = false;
+define('ROOT_URI', 'http://localhost/Projet');
 ?>
 
 <nav class="indigo darken-3">
@@ -13,11 +14,11 @@ $connected = false;
                     <i class="material-icons">close</i>
                 </div>
                 </form></li>
-            <li><a href="#">Accueil</a></li>
+            <li><a href="<?= ROOT_URI ?>">Accueil</a></li>
             <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
             <?php if (!$connected) { ?>
-                <li><a href='#'>Se connecter</a></li>
-                <li><a href='core/register_form.php'>S'inscrire</a></li>
+                <li><a href="<?= ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
+                <li><a href="<?= ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
 <?php } ?>
         </ul>
 

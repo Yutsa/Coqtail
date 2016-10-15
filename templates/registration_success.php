@@ -9,7 +9,7 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <?php include_once '../core/favicon.inc.php'; ?>
+    <?php include_once 'favicon.inc.php'; ?>
     </head>
     <body>
         <?php include_once 'menu.inc.php' ?>
