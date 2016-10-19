@@ -3,6 +3,9 @@
     This page is the landing point when a user registers. Verification of the
     inputs will be done client side on the form page.
 */
+
+define($DataDirectory, "../data/");
+
 if (isset($_POST["email"]) && isset($_POST["password"]))
 {
     $indexEntry; // The variable that will store the index entry of the user.
@@ -35,6 +38,12 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
 **/
 function addEntryToAccountIndex($email)
 {
+    if (!is_dir("../data/"))
+    {
+        echo "creating dir";
+        mkdir("../data/");
+    }
+
     $fileHandle = fopen("../data/accounts_index", "a+");
     $indexEntry = $email . ":../data/" . $email . "\n";
 
