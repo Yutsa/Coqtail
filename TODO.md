@@ -1,6 +1,11 @@
 TODO
 ----
 
+Faire des tests unitaires
+=========================
+
+Utiliser PHPUnit pour faire des tests unitaires
+
 Réécrire les URL
 =================
 

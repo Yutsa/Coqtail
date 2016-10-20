@@ -4,7 +4,54 @@
     inputs will be done client side on the form page.
 */
 
-define($DataDirectory, "../data/");
+/**
+* Adds an entry for a user to the account index
+* @param $email The email adress of the user.
+* @throws Throws and Exception when the email is already used.
+**/
+function addEntryToAccountIndex($email, $indexFilePath)
+{
+    if (!is_dir("../data/"))
+    {
+        echo "creating dir";
+        mkdir("../data/");
+    }
+
+    $fileHandle = fopen($indexFilePath, "a+");
+    $indexEntry = $email . ":../data/" . $email . "\n";
+
+    // If the index file is empty we add the index without verification
+    if (filesize($indexFilePath) === 0)
+        fwrite($fileHandle, $indexEntry);
+    else
+    {
+        // We check that the email isn't already used.
+        while (($line = fgets($fileHandle)) !== false)
+        {
+            $currentEmail = explode(":", $line)[0];
+            if ($email === $currentEmail)
+            {
+                throw new Exception("Email already used");
+            }
+        }
+
+        // The email hasn't been used
+        fwrite($fileHandle, $indexEntry);
+        fclose($fileHandle);
+    }
+}
+
+/**
+ * @param $userDataFilePath The path to the user's data file.
+ * @param $userData The user's data to be stored
+**/
+function storeUserData($userDataFilePath, $userData)
+{
+    $userDataFile = fopen($userDataFilePath, "a");
+    fwrite($userDataFile, serialize($userData));
+    fclose($userDataFile);
+}
+
 
 if (isset($_POST["email"]) && isset($_POST["password"]))
 {
@@ -29,52 +76,5 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     {
         $errorMessage = "Adresse mail déjà utilisée.";
     }
-}
-
-/**
-* Adds an entry for a user to the account index
-* @param $email The email adress of the user.
-* @throws Throws and Exception when the email is already used.
-**/
-function addEntryToAccountIndex($email)
-{
-    if (!is_dir("../data/"))
-    {
-        echo "creating dir";
-        mkdir("../data/");
-    }
-
-    $fileHandle = fopen("../data/accounts_index", "a+");
-    $indexEntry = $email . ":../data/" . $email . "\n";
-
-    // If the index file is empty we add the index without verification
-    if (filesize("../data/accounts_index") === 0)
-        fwrite($fileHandle, $indexEntry);
-    else
-    {
-        // We check that the email isn't already used.
-        while (($line = fgets($fileHandle)) !== false)
-        {
-            $currentEmail = explode(":", $line)[0];
-            if ($email === $currentEmail)
-            {
-                throw new Exception("Email already used");
-            }
-        }
-
-        // The email hasn't been used
-        fwrite($fileHandle, $indexEntry);
-        fclose($fileHandle);
-    }
-}
-/**
- * @param $userDataFilePath The path to the user's data file.
- * @param $userData The user's data to be stored
-**/
-function storeUserData($userDataFilePath, $userData)
-{
-    $userDataFile = fopen($userDataFilePath, "a");
-    fwrite($userDataFile, serialize($userData));
-    fclose($userDataFile);
 }
 ?>

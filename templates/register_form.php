@@ -25,6 +25,9 @@
 
         <div class="container">
             <div class="row">
+                <h1>S'inscrire</h1>
+            </div>
+            <div class="row">
                 <form class="col s12" action="#" method="post">
                     <div class="input-field col s6">
                         <input id="email" name="email" type="email" class="validate" required>
