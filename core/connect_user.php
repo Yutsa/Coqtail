@@ -4,6 +4,9 @@
     * registered. If it is then it checks if the password is corrected.
     */
 
+    $indexFilePath = realpath(dirname(__FILE__) .
+            "/../data/") . "/account_index";
+
 
     /**
     * @param $email The email adress of the user trying to
@@ -39,11 +42,7 @@
         if (!checkIfUserExists($_POST["email"],
             $indexFilePath))
         {
-            echo "non";
             $errorMessage = "Mot de passe ou nom de compte incorrect";
-        }
-        else {
-            echo "oui";
         }
 
     }
