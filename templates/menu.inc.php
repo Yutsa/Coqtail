@@ -20,6 +20,7 @@ define('ROOT_URI', "/Projet");
             <?php if (!$connected) { ?>
                 <li><a href="<?php echo ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
                 <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
+                <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
 <?php } ?>
         </ul>
 
