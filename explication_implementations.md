@@ -33,3 +33,16 @@ vers le fichier de données de cet utilisateur.
 
 À l'intérieur du fichier de données se trouve un tableau
 sérialisé représentant l'adresse mail, le mot de passe crypté ainsi qu'un tableau représentant le panier de cet utilisateur.
+
+### Inclusion du menu
+
+Nous avons rencontré des difficultés lors de l'inclusion du
+mot de passe. En effet nous utilisions des liens relatifs,
+cependant la page n'était pas au même niveau hiérarchique
+dans le dossier. Par exemple l'index est à la racine mais les
+pages comme le formulaire de connexion ou d'inscription sont
+dans un sous dossier.
+
+C'est pourquoi nous utilisons un `define` pour définir la
+racine du projet. Nous construisons ensuite les liens grâce à
+cette racine.

@@ -40,8 +40,12 @@
         if (!checkIfUserExists($_POST["email"],
             $indexFilePath))
         {
+            echo "non";
             $errorMessage = "Mot de passe ou nom de compte incorrect";
         }
-        
+        else {
+            echo "oui";
+        }
+
     }
 ?>
