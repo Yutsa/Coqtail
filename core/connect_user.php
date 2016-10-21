@@ -4,7 +4,6 @@
     * registered. If it is then it checks if the password is corrected.
     */
 
-    define($indexFilePath, "../data/accounts_index");
 
     /**
     * @param $email The email adress of the user trying to

@@ -13,7 +13,6 @@ function addEntryToAccountIndex($email, $indexFilePath)
 {
     if (!is_dir("../data/"))
     {
-        echo "creating dir";
         mkdir("../data/");
     }
 
@@ -67,8 +66,12 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
 
     try
     {
-        addEntryToAccountIndex($user["email"]);
-        $DataFilePath = "../data/" . $user["email"];
+        $accountIndexPath = realpath(dirname(__FILE__) .
+            "/../data/") . "/account_index";
+        addEntryToAccountIndex($user["email"],
+            $accountIndexPath);
+        $DataFilePath = realpath(dirname(__FILE__) .
+            "/../data/") . "/" . $user["email"];
         storeUserData($DataFilePath, $user);
         header("Location: registration_success.php");
     }
