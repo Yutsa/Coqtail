@@ -26,11 +26,16 @@ define('ROOT_URI', "/Projet");
                 </form></li>
             <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
             <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
-            <?php if (!$connected) { ?>
+            <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
+      <?php if (!$connected)
+            { ?>
                 <li><a href="<?php echo ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
                 <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
-                <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
-<?php } ?>
+      <?php }
+            else
+            { ?>
+                <li><a href='#'>Se déconnecter</a></li>
+      <?php } ?>
         </ul>
 
 
@@ -51,10 +56,11 @@ define('ROOT_URI', "/Projet");
                 </li>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#" data-activates="mobile-demo" class="ingredients">Parcourir Ingrédients</a></li>
-                <?php if (!$connected) { ?>
+                <?php if (!$connected)
+                { ?>
                     <li><a href='#'>Se connecter</a></li>
                     <li><a href='#'>S'inscrire</a></li>
-                <?php } ?>
+          <?php } ?>
             </ul>
         </ul>
 
