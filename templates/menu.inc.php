@@ -31,32 +31,70 @@ define('ROOT_URI', "/Projet");
                 <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
                 <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
 <?php } ?>
+   
+   
+    
         </ul>
 
-
-
+       
         <ul id="slide-out" class="side-nav black-text">
+              
+            <div id="menu">
+                <?php
+                    displayMenuItem('Aliment', $Hierarchie);
+                ?>
+            </div>
+            
+<!--
             <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header">First</div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header">Second</div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header">Third</div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#" data-activates="mobile-demo" class="ingredients">Parcourir Ingrédients</a></li>
-                <?php if (!$connected) { ?>
-                    <li><a href='#'>Se connecter</a></li>
-                    <li><a href='#'>S'inscrire</a></li>
-                <?php } ?>
+                    <li>
+                        <div class="collapsible-header">First</div>
+                        <div class="collapsible-body">
+                            <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">1</div>
+                                <div class="collapsible-body">
+                            <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">1.1</div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">1.2</div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">1.3</div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            </ul>
+                        </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">2</div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">3</div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Second</div>
+                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Third</div>
+                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                    </li>
+                </ul>
+                
             </ul>
-        </ul>
-
+-->
+            
+                
+                
     </div>
 </nav>
