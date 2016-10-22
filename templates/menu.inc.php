@@ -1,4 +1,13 @@
 <?php
+
+/*
+* This is the file to include to show the menu.
+* The options to connect or register shoudln't appear when logged in.
+* An option to log out should appear when logged in.
+*/
+
+//TODO: Figure out when the user is connected or not.
+//TODO: Show a log out button when logged in.
 $connected = false;
 define('ROOT_URI', "/Projet");
 

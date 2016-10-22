@@ -1,5 +1,5 @@
 <?php
-  define($indexFilePath, "../data/accounts_index");
+  define("indexFilePath", "../data/accounts_index");
 
   /**
   * return the basket of the current user
@@ -48,7 +48,7 @@
     else {
       $userBasket = unserialize($_COOKIE["userBasket"]);
       $userBasket[] = $recipe;
-      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30)
+      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30);
     }
   }
 
