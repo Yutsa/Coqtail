@@ -37,12 +37,12 @@ function getAllSubcategories($searchedCategory, &$hierarchie, &$ingredientsArray
 
 //function getFirstSubcategories(&$hierarchie, &$firstSubCategory)
 //{
-//    foreach ($hierarchie as $category => $subCategories) 
+//    foreach ($hierarchie as $category => $subCategories)
 //    {
 //        if (!isset($subCategories["super-categorie"]))
 //        {
 //            echo ('=>' . $category);
-//        }     
+//        }
 //    }
 //}
 
@@ -134,8 +134,8 @@ function displayMenuItem($categorie, &$hierarchie)
         <?php
         }
     }
-    // Else if the cateory don't have any sub-cat 
-    else    
+    // Else if the cateory don't have any sub-cat
+    else
     {
         // Test for diplay
         ?>

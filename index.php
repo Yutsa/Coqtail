@@ -2,13 +2,11 @@
 
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
-<<<<<<< Updated upstream
 include_once("core/basket.inc.php");
 
 createCookieBasket();
-=======
-//include_once("core/ajax.php");
->>>>>>> Stashed changes
+
+
 
 ?>
 <!DOCTYPE html>
@@ -34,11 +32,11 @@ createCookieBasket();
                 displayMenuItem('Aliment', $Hierarchie);
             ?>
         </div>
-        
-        
-       
+
+
+
         <?php
-        
+
             $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
