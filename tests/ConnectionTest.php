@@ -4,26 +4,35 @@ use PHPUnit\Framework\TestCase;
 
 class ConnectionTest extends TestCase
 {
-    public function testFindUser()
+    public function testGetUsersDataFile()
     {
         $file = realpath(dirname(__FILE__) . "/../data/") .
             "/indexTest";
-        if (file_exists($file))
-            unlink($file);
         $mail = "edouard@gmail.com";
         addEntryToAccountIndex($mail, $file);
-        $this->assertTrue(checkIfUserExists($mail, $file));
+        $result = getUsersDataFile($mail, $file);
+        $expectedResult = "../data/" . $mail;
+        $this->assertTrue($result == $expectedResult);
+        if (file_exists($file))
+            unlink($file);
     }
 
-    public function testDontFindUser()
+    public function testCheckPassword()
     {
-        $file = realpath(dirname(__FILE__) . "/../data/") .
-        "/indexTest";
-        if (file_exists($file))
-            unlink($file);
+        $dataFilePath = realpath(dirname(__FILE__) . "/../data/") . "/testData";
+        $password = "foobar";
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $mail = "edouard@gmail.com";
-        addEntryToAccountIndex($mail, $file);
-        $this->assertFalse(checkIfUserExists("prout", $file));
+        $user = array(
+            "email" => $mail,
+            "password" => $hashedPassword,
+            "basket" => array()
+        );
+        storeUserData($dataFilePath, $user);
+        $this->assertTrue(checkPassword($mail, $password, $dataFilePath));
+        if (file_exists($dataFilePath))
+            unlink($dataFilePath);
+
     }
 }
 

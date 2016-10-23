@@ -1,6 +1,5 @@
 <?php
   define("indexFilePath", "../data/accounts_index");
-
   /**
   * return the basket of the current user
   * @return basket of the user
@@ -52,18 +51,13 @@
     }
   }
 
-  /**
-  * Test if a user is logged
+   /**
+  * Checks if the user is logged in or not.
   * @return true if user logged false otherwise
   **/
   function isConnected()
   {
-    if(isset($_SESSION["dataFileName"])){
-      return true;
-    }
-    else {
-      return false;
-    }
+    return (isset($_SESSION["userDataFileName"]) ? true : false);
   }
 
 

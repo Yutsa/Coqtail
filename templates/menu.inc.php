@@ -8,7 +8,8 @@
 
 //TODO: Figure out when the user is connected or not.
 //TODO: Show a log out button when logged in.
-$connected = false;
+
+$connected = isset($_SESSION["userDataFileName"]);
 define('ROOT_URI', "/Projet");
 
 ?>
@@ -34,7 +35,7 @@ define('ROOT_URI', "/Projet");
       <?php }
             else
             { ?>
-                <li><a href='#'>Se déconnecter</a></li>
+                <li><a href="<?php echo ROOT_URI . "/core/logout.php" ?>">Se déconnecter</a></li>
       <?php } ?>
         </ul>
 
