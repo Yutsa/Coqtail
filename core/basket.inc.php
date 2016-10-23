@@ -57,7 +57,7 @@
   **/
   function isConnected()
   {
-    return (isset($_SESSION["userDataFileName"]) ? true : false);
+    return isset($_SESSION["userDataFileName"]);
   }
 
 
