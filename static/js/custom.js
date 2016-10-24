@@ -9,6 +9,7 @@ $(document).ready(function(){
     });
 });
 
+$(".button-collapse").sideNav();
 
 $('.collapsible-header').click(function() {
    var url = 'core/ajax.php';
