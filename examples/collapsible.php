@@ -2,11 +2,6 @@
 
 include_once("../core/donnees.inc.php");
 include_once("../core/functions.inc.php");
-include_once("../core/basket.inc.php");
-
-createCookieBasket();
-
-
 
 ?>
 <!DOCTYPE html>

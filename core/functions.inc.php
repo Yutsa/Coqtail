@@ -105,8 +105,6 @@ function displayCocktail($recette)
 }
 ?>
 
-<?php ?>
-
 <?php
 
 // Take a cateory and display all of its sub-categories

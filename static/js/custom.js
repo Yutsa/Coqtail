@@ -13,7 +13,7 @@ $(document).ready(function(){
 $('.collapsible-header').click(function() {
    var url = 'core/ajax.php';
 
-   alert("clicked");
+   //alert("clicked");
 
    var nextCollapsible = $(this).next();
    var categorie = $(this).text();

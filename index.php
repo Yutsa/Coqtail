@@ -27,16 +27,16 @@ createCookieBasket();
 <body>
     <?php include_once("templates/menu.inc.php"); ?>
     <main class="container">
+
+        <!-- Example of the menu -->
         <div class="menu">
             <?php
                 displayMenuItem('Aliment', $Hierarchie);
             ?>
         </div>
 
-
-
         <?php
-
+            /* Example of how to display cocktails from an ingredient. */
             $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
