@@ -40,9 +40,9 @@
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
       $userData["basket"][] = $recipe;
-      /**
-      * TODO : Add in file the new basket
-      **/
+      fclose($userDataFilePath);
+      $userDataFile = fopen($userDataFilePath, "w");
+      fwrite($userDataFile, serialize($userData));
       fclose($userDataFilePath);
     }
     else {
