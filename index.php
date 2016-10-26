@@ -1,10 +1,12 @@
 <?php
-
+session_start();
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
 include_once("core/basket.inc.php");
 
 createCookieBasket();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +27,16 @@ createCookieBasket();
 <body>
     <?php include_once("templates/menu.inc.php"); ?>
     <main class="container">
+
+        <!-- Example of the menu -->
+        <div class="menu">
+            <?php
+                displayMenuItem('Aliment', $Hierarchie);
+            ?>
+        </div>
+
         <?php
+            /* Example of how to display cocktails from an ingredient. */
             $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
@@ -37,5 +48,6 @@ createCookieBasket();
     <script type="text/javascript" src="static/js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="static/js/materialize.min.js"></script>
     <script src="static/js/custom.js" charset="utf-8"></script>
+    <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
 </body>
 </html>
