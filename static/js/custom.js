@@ -17,7 +17,7 @@ $('body').on('click', 'div.collapsible-header', function() {
     var nextCollapsible = $(this).next();
     var categorie = $(this).text();
 
-    //console.log.($(this).parent().parent().prop('tagName'));
+    //console.log($(this).parent().parent().prop('tagName'));
 
     //$(this).parent().parent().addClass('blue');
 
@@ -35,5 +35,15 @@ $('body').on('click', 'div.collapsible-header', function() {
         //$(this).addClass('active');
 
         //alert(data);
+    });
+});
+
+$('body').on('click', 'a.addToBasket', function() {
+    var titre = $(this).parent().parent().children().next().children().children(".card-title").text();
+
+    var url = "/Projet/core/basket.inc.php";
+
+    $.post(url, {titre: titre}, function(data) {
+        console.log(data);
     });
 });

@@ -70,6 +70,22 @@ function getAllCocktailsWithIngredient($ingredient, &$hierarchy, &$recettes)
     return $ResRecettes;
 }
 
+/**
+* @param $name The name of the cocktail to add to the basket
+* @param $recettes The array of recipes
+* @return The recipe (an array).
+**/
+function getCocktailByName($name, &$recettes)
+{
+    foreach ($recettes as $recette)
+    {
+        if ($recette["titre"] == $name)
+        {
+            return $recette;
+        }
+    }
+}
+
 function displayCocktail($recette)
 {
     $cocktail_name = $recette["titre"];
@@ -88,14 +104,15 @@ function displayCocktail($recette)
             <div class='card-content'>
                 <div class="center-align">
                     <span class='card-title orange-text darken-4'>
-                        <?= $cocktail_name ?></span>
+                        <?= $cocktail_name ?>
+                    </span>
                 </div>
                 <p>
                     <?= $cocktail_description ?>
                 </p>
             </div>
             <div class='card-action'>
-                <a href='#' onclick="addRecipeBasket($recette)"><span class="blue-text">Ajouter au panier</span></a>
+                <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
                 <a href='#'><span class="blue-text">Supprimer du panier</span></a>
             </div>
         </div>
