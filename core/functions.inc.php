@@ -120,7 +120,6 @@ function displayMenuItem($categorie, &$hierarchie)
         $listAliment = getSubcategory($categorie, $hierarchie)
 
 ?>
-<div>
     <ul class="collapsible" data-collapsible="accordion">
         <?php
         // Diplay sub menu for each sub-categories
@@ -128,23 +127,23 @@ function displayMenuItem($categorie, &$hierarchie)
         {
         ?>
         <li>
-            <div class="collapsible-header"><?php echo($Aliment); ?></div>
+            <div class="collapsible-header" id="collapsible-header"><?php echo($Aliment); ?></div>
             <div class="collapsible-body"></div>
         </li>
+        <hr />
         <?php
         }
     }
-    // Else if the cateory don't have any sub-cat 
+    // Else if the cateory don't have any sub-cat"
     else    
     {
         // Test for diplay
         ?>
-        <div><p>ok</p></div>
+        <div><hr /><a class="waves-effect waves-light btn">Ajouter à la recherche</a></div>
         <?php
     }
         ?>
     </ul>
-</div>
 <?php
 }
 ?>

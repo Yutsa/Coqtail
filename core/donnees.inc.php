@@ -1470,7 +1470,7 @@
 $Hierarchie=array (
     'Épice' =>
     array (
-        'sous-categorie' =>
+        'sous-categnie' =>
         array (
             6 => 'Épice commune',
             7 => 'Épice européenne',
