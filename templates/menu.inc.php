@@ -14,10 +14,52 @@ define('ROOT_URI', "/Projet");
 
 ?>
 
+<?php
+
+// Take a cateory and display all of its sub-categories
+// in a menu
+function displayMenuItem($categorie, &$hierarchie)
+{
+    // If the sub-cat exist
+    if (isset($hierarchie[$categorie]['sous-categorie']))
+    {
+        // Gets all sub-cat
+        $listAliment = getSubcategory($categorie, $hierarchie)
+
+?>
+    <ul class="collapsible" data-collapsible="accordion">
+        <?php
+        // Diplay sub menu for each sub-categories
+        foreach ($listAliment as $Aliment)
+        {
+        ?>
+        <li>
+            <div class="collapsible-header" id="collapsible-header"><?php echo($Aliment); ?></div>
+            <div class="collapsible-body"></div>
+        </li>
+        <hr />
+        <?php
+        }
+    }
+    // Else if the cateory don't have any sub-cat
+    else
+    {
+        // Test for diplay
+        ?>
+        <div><hr /><a class="waves-effect waves-light btn">Ajouter à la recherche</a></div>
+        <?php
+    }
+        ?>
+    </ul>
+<?php
+}
+?>
+
 <nav class="indigo darken-3">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">Coq'tail</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><form>
                 <div class="input-field">
@@ -28,12 +70,17 @@ define('ROOT_URI', "/Projet");
                 </form></li>
             <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
             <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
-            <?php if (!$connected) { ?>
-            <li><a href="<?php echo ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
-            <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
-            <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
-            <?php } ?>
 
+            <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
+            <?php if (!$connected)
+            { ?>
+                <li><a href="<?php echo ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
+                <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
+                <?php }
+                else
+                { ?>
+                    <li><a href="<?php echo ROOT_URI . "/core/logout.php" ?>">Se déconnecter</a></li>
+                    <?php } ?>
         </ul>
 
         <ul id="slide-out" class="side-nav black-text">
@@ -42,19 +89,6 @@ define('ROOT_URI', "/Projet");
                 displayMenuItem('Aliment', $Hierarchie);
                 ?>
             </div>
-        </ul>
-
-
-        <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
-        <?php if (!$connected)
-{ ?>
-        <li><a href="<?php echo ROOT_URI . "/templates/login_page.php" ?>">Se connecter</a></li>
-        <li><a href="<?php echo ROOT_URI . "/templates/register_form.php"?>">S'inscrire</a></li>
-        <?php }
-               else
-               { ?>
-        <li><a href="<?php echo ROOT_URI . "/core/logout.php" ?>">Se déconnecter</a></li>
-        <?php } ?>
         </ul>
 
     <ul class="side-nav" id="mobile-demo">
