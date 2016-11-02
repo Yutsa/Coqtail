@@ -1,4 +1,5 @@
 <?php
+    session_start();
     /*
     * This page is handling the connection process. It checks if the user is
     * registered. If it is then it checks if the password is corrected.
@@ -24,7 +25,7 @@
             $currentMail = $indexData[0];
             $currentPath = $indexData[1];
             if ($email == $currentMail)
-                return $currentPath;
+                return trim($currentPath);
         }
         throw new Exception("Email not found");
     }
@@ -40,7 +41,7 @@
         $userData = unserialize(fgets($handle));
 
         /* Verify the password from param and from the data file */
-        //password_verify($userData["password"], $password);
+        return password_verify($password, $userData["password"]);
     }
 
     if (isset($_POST["email"]) && isset($_POST["password"]))
@@ -56,8 +57,8 @@
                 throw new Exception("Mot de passe incorrect.");
             }
 
-            $_SESSION["identifiant"] = $dataFilePath;
-            echo $_SESSION["identifiant"];
+            $_SESSION["userDataFileName"] = $dataFilePath;
+            header("Location: ../index.php");
         }
         catch (Exception $e)
         {

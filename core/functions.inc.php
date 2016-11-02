@@ -1,5 +1,5 @@
 <?php
-
+include_once("basket.inc.php");
 // Takes a category as parameter and returns an array of all
 // its subcategories. The hierarchy array must be passed as
 // parameter too.
@@ -37,12 +37,12 @@ function getAllSubcategories($searchedCategory, &$hierarchie, &$ingredientsArray
 
 //function getFirstSubcategories(&$hierarchie, &$firstSubCategory)
 //{
-//    foreach ($hierarchie as $category => $subCategories) 
+//    foreach ($hierarchie as $category => $subCategories)
 //    {
 //        if (!isset($subCategories["super-categorie"]))
 //        {
 //            echo ('=>' . $category);
-//        }     
+//        }
 //    }
 //}
 
@@ -95,7 +95,8 @@ function displayCocktail($recette)
                 </p>
             </div>
             <div class='card-action'>
-                <a href='#'><span class="blue-text">Ajouter au panier</span></a>
+                <a href='#' onclick="addRecipeBasket($recette)"><span class="blue-text">Ajouter au panier</span></a>
+                <a href='#'><span class="blue-text">Supprimer du panier</span></a>
             </div>
         </div>
     </div>
@@ -104,8 +105,6 @@ function displayCocktail($recette)
     }
 }
 ?>
-
-<?php ?>
 
 <?php
 
@@ -134,8 +133,8 @@ function displayMenuItem($categorie, &$hierarchie)
         <?php
         }
     }
-    // Else if the cateory don't have any sub-cat"
-    else    
+    // Else if the cateory don't have any sub-cat
+    else
     {
         // Test for diplay
         ?>

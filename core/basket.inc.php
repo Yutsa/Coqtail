@@ -1,6 +1,6 @@
 <?php
+  include_once("functions.inc.php");
   define("indexFilePath", "../data/accounts_index");
-
   /**
   * return the basket of the current user
   * @return basket of the user
@@ -33,6 +33,7 @@
   * Add to the user's basket a new recipe
   **/
   function addRecipeBasket($recipe){
+    echo "testAdd";
     if(isConnected())
     {
       $userDataFileName = $_SESSION["userDataFileName"];
@@ -40,9 +41,9 @@
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
       $userData["basket"][] = $recipe;
-      /**
-      * TODO : Add in file the new basket
-      **/
+      fclose($userDataFilePath);
+      $userDataFile = fopen($userDataFilePath, "w");
+      fwrite($userDataFile, serialize($userData));
       fclose($userDataFilePath);
     }
     else {
@@ -52,17 +53,34 @@
     }
   }
 
-  /**
-  * Test if a user is logged
+   /**
+  * Checks if the user is logged in or not.
   * @return true if user logged false otherwise
   **/
   function isConnected()
   {
-    if(isset($_SESSION["dataFileName"])){
-      return true;
+    return isset($_SESSION["userDataFileName"]);
+  }
+
+  /**
+  * Display all the recipes of the user's basket logged or not
+  **/
+  function displayBasket(){
+    $userBasket = getUserBasket();
+    echo 'Test1';
+    if(isConnected()){
+      echo 'Test2';
+      foreach ($userBasket as $recipe) {
+        echo 'Test2.1';
+        displayCocktail($recipe);
+      }
     }
-    else {
-      return false;
+    else{
+      echo 'Test3';
+      foreach ($userBasket as $recipe) {
+        echo 'Test3.1';
+        displayCocktail($recipe);
+      }
     }
   }
 

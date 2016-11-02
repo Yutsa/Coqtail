@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
     This page is the landing point when a user registers. Verification of the
     inputs will be done client side on the form page.

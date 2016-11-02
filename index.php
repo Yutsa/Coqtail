@@ -1,8 +1,11 @@
 <?php
+session_start();
+include_once("core/basket.inc.php");
 
+createCookieBasket();
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
-//include_once("core/ajax.php");
+
 
 ?>
 <!DOCTYPE html>
@@ -20,17 +23,13 @@ include_once("core/functions.inc.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?php include_once("templates/favicon.inc.php"); ?>
     </head>
-    <body>
-       <?php include_once("templates/menu.inc.php"); ?>
-        <main class="container">
-            <div class="menu">
-                <?php
-                displayMenuItem('Aliment', $Hierarchie);
-                ?>
-            </div>
-            
-            <?php
 
+    <body>
+        <?php include_once("templates/menu.inc.php"); ?>
+        <main class="container">
+
+            <?php
+            /* Example of how to display cocktails from an ingredient. */
             $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
             foreach($recettes as $recette)
             {
@@ -42,5 +41,11 @@ include_once("core/functions.inc.php");
         <script type="text/javascript" src="static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="static/js/materialize.min.js"></script>
         <script src="static/js/custom.js" charset="utf-8"></script>
+    </body>
+
+    <script type="text/javascript" src="static/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="static/js/materialize.min.js"></script>
+    <script src="static/js/custom.js" charset="utf-8"></script>
+    <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
     </body>
 </html>

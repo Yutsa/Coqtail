@@ -9,6 +9,7 @@ $(document).ready(function(){
     });
 });
 
+$(".button-collapse").sideNav();
 
 $('body').on('click', 'div.collapsible-header', function() {
     var url = 'core/ajax.php';
@@ -37,16 +38,3 @@ $('body').on('click', 'div.collapsible-header', function() {
     });
 });
 
-//$('.collapsible-header').click(function() {
-//    var url = 'core/ajax.php';
-//    
-//    var nextCollapsible = $(this).next();
-//    var categorie = $(this).text();
-//    alert(categorie);
-//    
-//    $.post(url, { cat : categorie }, function(data) {
-//        $(nextCollapsible).empty();
-//        $(nextCollapsible).append(data);
-//        //alert(data);
-//    });
-//});

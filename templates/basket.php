@@ -1,4 +1,7 @@
-
+<?php
+  session_start();
+  include_once("../core/basket.inc.php");
+?>
 
 
 <!DOCTYPE html>
@@ -16,5 +19,13 @@
     </head>
     <body>
         <?php include_once 'menu.inc.php' ?>
+
+    <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/materialize.min.js"></script>
+    <script src="../static/js/custom.js" charset="utf-8"></script>
+    <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
+    <?php
+      displayBasket();
+    ?>
     </body>
 </html>

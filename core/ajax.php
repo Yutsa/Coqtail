@@ -4,5 +4,5 @@
 include_once("functions.inc.php");
 include_once("donnees.inc.php");
 
-    displayMenuItem($_POST['cat'], $Hierarchie);
+displayMenuItem($_POST['cat'], $Hierarchie);
 ?>

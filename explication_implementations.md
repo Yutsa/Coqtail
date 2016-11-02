@@ -34,7 +34,12 @@ vers le fichier de données de cet utilisateur.
 À l'intérieur du fichier de données se trouve un tableau
 sérialisé représentant l'adresse mail, le mot de passe crypté ainsi qu'un tableau représentant le panier de cet utilisateur.
 
-### Inclusion du menu
+Nous aurions pu également simplement stocker du code php dans un
+fichier avec la variable correspondant à l'utilisateur. Cependant
+cette façon de faire est moins souple.
+
+Inclusion du menu
+=================
 
 Nous avons rencontré des difficultés lors de l'inclusion du
 mot de passe. En effet nous utilisions des liens relatifs,
@@ -46,3 +51,11 @@ dans un sous dossier.
 C'est pourquoi nous utilisons un `define` pour définir la
 racine du projet. Nous construisons ensuite les liens grâce à
 cette racine.
+
+Test Unitaires
+==============
+
+Nous avons décidé d'utiliser PHPUnit pour effectuer des tests unitaires
+et s'assurer de la validité de nos fonctions. Cela permet également de
+vérifier que tout fonctionne toujours après un changement
+d'implémentation d'un composant du site par exemple.
