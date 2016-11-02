@@ -22,7 +22,6 @@ function displayMenuItem($categorie, &$hierarchie)
             <div class="collapsible-header" id="collapsible-header"><?php echo($Aliment); ?></div>
             <div class="collapsible-body"></div>
         </li>
-        <hr />
         <?php
         }
     }
@@ -31,7 +30,7 @@ function displayMenuItem($categorie, &$hierarchie)
     {
         // Test for diplay
         ?>
-        <div><hr /><a class="waves-effect waves-light btn">Ajouter à la recherche</a></div>
+<!--        <div><a class="waves-effect waves-light btn">Ajouter à la recherche</a></div>-->
         <?php
     }
         ?>

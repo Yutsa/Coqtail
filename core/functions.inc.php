@@ -74,13 +74,20 @@ function displayCocktail($recette)
 {
     $cocktail_name = $recette["titre"];
     $cocktail_description = $recette["preparation"];
-    $cocktail_image = "static/img/Cuba_libre.jpg";
+        
+    //Get the image's path
+    $cocktail_image = "../static/img/" . ucfirst(str_replace(' ', '_', $cocktail_name)) . ".jpg";
+    
+    // If the image doesn't exist take a generic image
+    if (!file_exists($cocktail_image))
+        $cocktail_image = "../static/img/Cuba_libre.jpg";
+    
+    // If it's ok, display the card
     if (!empty($cocktail_name) && !empty($cocktail_description) &&
         !empty($cocktail_image))
     {
 ?>
-<div class='row'>
-    <div class='col s12 m6 offset-m3'>
+    <div class='col s6 m3'>
         <div class='card'>
             <div class='card-image'>
                 <img src='<?= $cocktail_image ?>' alt='black-velvet' />
@@ -100,7 +107,6 @@ function displayCocktail($recette)
             </div>
         </div>
     </div>
-</div>
 <?php
     }
 }

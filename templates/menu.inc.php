@@ -1,7 +1,5 @@
 <?php
 
-include(realpath(dirname(__FILE__) .
-        "/../core/functions_ingredient_menu.inc.php"));
 /*
 * This is the file to include to show the menu.
 * The options to connect or register shoudln't appear when logged in.
@@ -30,7 +28,7 @@ define('ROOT_URI', "/Projet");
                 </div>
                 </form></li>
             <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
-            <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
+            <li><a href="<?php echo ROOT_URI . "/templates/cocktail_display.php"?>">Parcourir Ingrédients</a></li>
 
             <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
             <?php if (!$connected)
@@ -44,17 +42,9 @@ define('ROOT_URI', "/Projet");
                     <?php } ?>
         </ul>
 
-        <ul id="slide-out" class="side-nav black-text">
-            <div class="menu">
-                <?php
-                displayMenuItem('Aliment', $Hierarchie);
-                ?>
-            </div>
-        </ul>
-
     <ul class="side-nav" id="mobile-demo">
         <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
-        <li><a href="#" data-activates="slide-out" class="ingredients">Parcourir Ingrédients</a></li>
+        <li><a href="<?php echo ROOT_URI . "/templates/cocktail_display.php"?>">Parcourir Ingrédients</a></li>
         <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
         <?php if (!$connected)
 { ?>

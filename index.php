@@ -6,7 +6,6 @@ createCookieBasket();
 include_once("core/donnees.inc.php");
 include_once("core/functions.inc.php");
 
-
 ?>
 <!DOCTYPE html>
 <html>
