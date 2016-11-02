@@ -1,5 +1,6 @@
 <?php
   include_once("functions.inc.php");
+  include_once("donnees.inc.php");
   define("indexFilePath", "../data/accounts_index");
   /**
   * return the basket of the current user
@@ -33,7 +34,6 @@
   * Add to the user's basket a new recipe
   **/
   function addRecipeBasket($recipe){
-    echo "testAdd";
     if(isConnected())
     {
       $userDataFileName = $_SESSION["userDataFileName"];
@@ -84,5 +84,11 @@
     }
   }
 
+if (isset($_POST["titre"]))
+{
+    $recipe = getCocktailByName($_POST["titre"], $Recettes);
+    echo ($_POST["titre"]);
+    //addRecipeBasket($recipe);
+}
 
  ?>

@@ -33,3 +33,13 @@ $('body').on('click', 'div.collapsible-header', function() {
         $("div#recette").html(data);
     });
 });
+
+$('body').on('click', 'a.addToBasket', function() {
+    var titre = $(this).parent().parent().children().next().children().children(".card-title").text();
+
+    var url = "/Projet/core/basket.inc.php";
+
+    $.post(url, {titre: titre}, function(data) {
+        console.log(data);
+    });
+});
