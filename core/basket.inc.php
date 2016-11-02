@@ -1,4 +1,5 @@
 <?php
+  include_once("functions.inc.php");
   define("indexFilePath", "../data/accounts_index");
   /**
   * return the basket of the current user
@@ -32,6 +33,7 @@
   * Add to the user's basket a new recipe
   **/
   function addRecipeBasket($recipe){
+    echo "testAdd";
     if(isConnected())
     {
       $userDataFileName = $_SESSION["userDataFileName"];
@@ -58,6 +60,28 @@
   function isConnected()
   {
     return isset($_SESSION["userDataFileName"]);
+  }
+
+  /**
+  * Display all the recipes of the user's basket logged or not
+  **/
+  function displayBasket(){
+    $userBasket = getUserBasket();
+    echo 'Test1';
+    if(isConnected()){
+      echo 'Test2';
+      foreach ($userBasket as $recipe) {
+        echo 'Test2.1';
+        displayCocktail($recipe);
+      }
+    }
+    else{
+      echo 'Test3';
+      foreach ($userBasket as $recipe) {
+        echo 'Test3.1';
+        displayCocktail($recipe);
+      }
+    }
   }
 
 

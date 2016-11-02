@@ -1,5 +1,5 @@
 <?php
-
+include_once("basket.inc.php");
 // Takes a category as parameter and returns an array of all
 // its subcategories. The hierarchy array must be passed as
 // parameter too.
@@ -95,7 +95,8 @@ function displayCocktail($recette)
                 </p>
             </div>
             <div class='card-action'>
-                <a href='#'><span class="blue-text">Ajouter au panier</span></a>
+                <a href='#' onclick="addRecipeBasket($recette)"><span class="blue-text">Ajouter au panier</span></a>
+                <a href='#'><span class="blue-text">Supprimer du panier</span></a>
             </div>
         </div>
     </div>
