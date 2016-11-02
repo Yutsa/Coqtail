@@ -1,14 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
-include(realpath(dirname(__FILE__) .
-        "/../core/functions_ingredient_menu.inc.php"));
 
-include(realpath(dirname(__FILE__) .
-        "/../core/donnees.inc.php"));
-
->>>>>>> 6fedf2ea7f662115ac695b6808b27048b14e8645
 /*
 * This is the file to include to show the menu.
 * The options to connect or register shoudln't appear when logged in.

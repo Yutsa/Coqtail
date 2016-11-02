@@ -6,6 +6,7 @@
 include_once("functions.inc.php");
 include_once("donnees.inc.php");
 
+
 //Get all recette with ingredient selected 
 $recettes = getAllCocktailsWithIngredient($_POST['cat'], $Hierarchie, $Recettes);
 
