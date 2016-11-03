@@ -35,9 +35,11 @@ $('body').on('click', 'div.collapsible-header', function() {
 });
 
 $('body').on('click', 'button.addToBasket', function() {
-    var titre = $(this).parent().parent().children().next().children().children(".card-title").text();
+    var titre = $(this).parent().prev().children(".card-title").children(".title").text();
 
     titre = titre.trim();
+    
+    console.log(titre);
 
     var url = "/Projet/core/basket.inc.php";
 
@@ -45,3 +47,4 @@ $('body').on('click', 'button.addToBasket', function() {
         console.log(data);
     });
 });
+

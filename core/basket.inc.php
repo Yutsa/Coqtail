@@ -11,7 +11,7 @@
   {
     if(isConnected()){
       $userDataFileName = $_SESSION["userDataFileName"];
-      $userDataFilePath = "../data/" . $userDataFileName;
+      $userDataFilePath = $userDataFileName;
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
       fclose($userDataFile);
@@ -38,7 +38,7 @@
     if(isConnected())
     {
       $userDataFileName = $_SESSION["userDataFileName"];
-      $userDataFilePath = "../data/" . $userDataFileName;
+      $userDataFilePath = $userDataFileName;
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
       $userData["basket"][] = $recipe;
@@ -128,7 +128,7 @@ if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
     echo ($_POST["titre"]);
-    addRecipeBasket($recipe);
+    //addRecipeBasket($recipe);
 }
 
  ?>

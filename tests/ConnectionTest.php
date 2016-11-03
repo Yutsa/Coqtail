@@ -33,6 +33,7 @@ class ConnectionTest extends TestCase
         if (file_exists($dataFilePath))
             unlink($dataFilePath);
 
+        $_SESSION["userDataFileName"] = $dataFilePath;
     }
 }
 
