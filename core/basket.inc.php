@@ -128,7 +128,7 @@ if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
     echo ($_POST["titre"]);
-    addRecipeBasket($recipe);
+    //addRecipeBasket($recipe);
 }
 
  ?>

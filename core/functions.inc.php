@@ -118,15 +118,17 @@ function displayCocktail($recette)
         </div>
         <div class="card-reveal transparence">
             <span class="card-title orange-text darken-4 center">
-                <?= $cocktail_name ?>
+                <span class="title">
+                    <?= $cocktail_name ?>
+                </span>
                 <br />
                 <i class="material-icons center">close</i>
             </span>
             <p><?= $cocktail_description ?></p>
         </div>
         <div class='card-action'>
-            <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter au panier</span></button>
-            <button class="waves-effect waves-light btn"><span class="white-text">Supprimer du panier</span></button>
+            <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span></button>
+            <button class="waves-effect waves-light btn"><span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span></button>
         </div>
     </div>
 </div>
