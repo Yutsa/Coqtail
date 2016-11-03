@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  //session_start();
   include_once("../core/basket.inc.php");
 ?>
 
@@ -20,7 +20,7 @@
     <body>
         <?php include_once 'menu.inc.php' ?>
 
-        <?php
+            <?php
             $basket =  getUserBasket();
             echo $basket[0]["titre"];
         ?>
