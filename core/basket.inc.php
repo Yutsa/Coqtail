@@ -54,6 +54,45 @@
     }
   }
 
+  /**
+  * Search a recipe in the user basket
+  * @return the index of recipe in the basket or -1 if is don't exist
+  * @param $recipe the recipe to search
+  **/
+  function searchRecipeInBasket($recipe){
+    $index = 0;
+    if(isConnected()){
+      $userDataFileName = $_SESSION["userDataFileName"];
+      $userDataFilePath = "../data/" . $userDataFileName;
+      $userDataFile = fopen($userDataFilePath, "r");
+      $userData = unserialize(fgets($userDataFile));
+      foreach($userData["basket"] as $userRecipe){
+        if($userRecipe == $recipe){
+          return $index;
+        }
+        $index++;
+      }
+    }
+    else{
+      $userBasket = unserialize($_COOKIE["userBasket"]);
+      foreach($userBasket as $userRecipe){
+        if($userRecipe == $recipe){
+          return $index;
+        }
+        $index++;
+      }
+    }
+    return -1;
+  }
+
+  function removeRecipeBasket($recipe){
+    if(($index = searchRecipeInBasket($recipe))!=-1){
+      if(isConnected()){
+        //TODO
+      }
+    }
+  }
+
    /**
   * Checks if the user is logged in or not.
   * @return true if user logged false otherwise
