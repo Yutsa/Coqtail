@@ -2,7 +2,7 @@
   include_once("functions.inc.php");
   include_once("donnees.inc.php");
   define("indexFilePath", "../data/accounts_index");
-
+  session_start();
   /**
   * return the basket of the current user
   * @return basket of the user
@@ -39,11 +39,11 @@
     {
       $userDataFileName = $_SESSION["userDataFileName"];
       $userDataFilePath = $userDataFileName;
-      $userDataFile = fopen($userDataFilePath, "r");
+      $userDataFile = fopen($userDataFilePath, "r+");
       $userData = unserialize(fgets($userDataFile));
       $userData["basket"][] = $recipe;
       fclose($userDataFile);
-      $userDataFile = fopen($userDataFilePath, "w");
+      $userDataFile = fopen($userDataFilePath, "w+");
       fwrite($userDataFile, serialize($userData));
       fclose($userDataFile);
     }
@@ -127,8 +127,8 @@
 if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
-    echo ($_POST["titre"]);
-    //addRecipeBasket($recipe);
+    addRecipeBasket($recipe);
+    print_r(getUserBasket());
 }
 
  ?>

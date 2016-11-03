@@ -73,17 +73,6 @@ class BasketTest extends TestCase
         $this->assertTrue($Recettes[0] == $basket[0]);
         $this->removeFiles();
     }
-
-    public function testAddToBasketNotConnected()
-    {
-        global $Recettes;
-        setcookie("userBasket",serialize($Recettes[1]), time()+60*60*25*30);
-        $basket = getUserBasket();
-        print_r($basket[0]);
-        print_r($Recettes[1]);
-        $this->assertTrue($basket[0] == $Recettes[1]);
-
-    }
 }
 
  ?>

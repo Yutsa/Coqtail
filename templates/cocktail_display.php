@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include_once(realpath(dirname(__FILE__) .
                       "/../core/functions_ingredient_menu.inc.php"));
 include_once(realpath(dirname(__FILE__) .
