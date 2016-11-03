@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-
 <?php
+session_start();
 include_once(realpath(dirname(__FILE__) .
                       "/../core/functions_ingredient_menu.inc.php"));
 include_once(realpath(dirname(__FILE__) .
                       "/../core/donnees.inc.php"));
 ?>
 
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -34,7 +33,7 @@ include_once(realpath(dirname(__FILE__) .
             <!-- Recettes -->
             <div class="col s9 m9 l9">
                 <div id="recette" class="row">
-                    
+
                 </div>
             </div>
         </div>
@@ -43,6 +42,4 @@ include_once(realpath(dirname(__FILE__) .
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>
     </body>
-</html>     
-
-
+</html>

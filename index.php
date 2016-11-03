@@ -26,15 +26,14 @@ include_once("core/functions.inc.php");
     <body>
         <?php include_once("templates/menu.inc.php"); ?>
         <main class="container">
-
-            <?php
-            /* Example of how to display cocktails from an ingredient. */
-            $recettes = getAllCocktailsWithIngredient("Liqueur", $Hierarchie, $Recettes);
-            foreach($recettes as $recette)
-            {
-                displayCocktail($recette);
-            }
-            ?>
+            <div class="row">
+                <h1 class="col s12">Bienvenue sur Coq'tail le site de recettes de cocktail</h1>
+            </div>
+            <div class="row">
+                <p class="col s12">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
         </main>
 
 

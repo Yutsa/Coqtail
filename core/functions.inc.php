@@ -103,28 +103,8 @@ function displayCocktail($recette)
         !empty($cocktail_image))
     {
 ?>
+
 <div class='col s12 m6 l3'>
-<!--
-    <div class='card'>
-        <div class='card-image'>
-            <img src='<?= $cocktail_image ?>' alt='black-velvet' />
-        </div>
-        <div class='card-content'>
-            <div class="center-align">
-                <span class='card-title orange-text darken-4'>
-                    <?= $cocktail_name ?>
-                </span>
-            </div>
-            <p>
-                <?= $cocktail_description ?>
-            </p>
-        </div>
-        <div class='card-action'>
-            <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
-            <a href='#'><span class="blue-text">Supprimer du panier</span></a>
-        </div>
-    </div>
--->
     <div class="card sticky-action">
         <div class="card-image waves-effect waves-block waves-light crop">
             <img class="activator img" src='<?= $cocktail_image ?>' alt='black-velvet' />
@@ -145,8 +125,8 @@ function displayCocktail($recette)
             <p><?= $cocktail_description ?></p>
         </div>
         <div class='card-action'>
-            <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
-            <a href='#'><span class="blue-text">Supprimer du panier</span></a>
+            <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter au panier</span></button>
+            <button class="waves-effect waves-light btn"><span class="white-text">Supprimer du panier</span></button>
         </div>
     </div>
 </div>

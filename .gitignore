@@ -1,5 +1,5 @@
 *.zip
 *.pdf
 *.orig
-DS_STORE
+.DS_Store
 data/
