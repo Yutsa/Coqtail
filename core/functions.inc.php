@@ -90,40 +90,67 @@ function displayCocktail($recette)
 {
     $cocktail_name = $recette["titre"];
     $cocktail_description = $recette["preparation"];
-        
+
     //Get the image's path
     $cocktail_image = "../static/img/" . ucfirst(str_replace(' ', '_', $cocktail_name)) . ".jpg";
-    
+
     // If the image doesn't exist take a generic image
     if (!file_exists($cocktail_image))
         $cocktail_image = "../static/img/Cuba_libre.jpg";
-    
+
     // If it's ok, display the card
     if (!empty($cocktail_name) && !empty($cocktail_description) &&
         !empty($cocktail_image))
     {
 ?>
-    <div class='col s6 m3'>
-        <div class='card'>
-            <div class='card-image'>
-                <img src='<?= $cocktail_image ?>' alt='black-velvet' />
+<div class='col s12 m6 l3'>
+<!--
+    <div class='card'>
+        <div class='card-image'>
+            <img src='<?= $cocktail_image ?>' alt='black-velvet' />
+        </div>
+        <div class='card-content'>
+            <div class="center-align">
+                <span class='card-title orange-text darken-4'>
+                    <?= $cocktail_name ?>
+                </span>
             </div>
-            <div class='card-content'>
-                <div class="center-align">
-                    <span class='card-title orange-text darken-4'>
-                        <?= $cocktail_name ?>
-                    </span>
-                </div>
-                <p>
-                    <?= $cocktail_description ?>
-                </p>
-            </div>
-            <div class='card-action'>
-                <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
-                <a href='#'><span class="blue-text">Supprimer du panier</span></a>
-            </div>
+            <p>
+                <?= $cocktail_description ?>
+            </p>
+        </div>
+        <div class='card-action'>
+            <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
+            <a href='#'><span class="blue-text">Supprimer du panier</span></a>
         </div>
     </div>
+-->
+    <div class="card sticky-action">
+        <div class="card-image waves-effect waves-block waves-light crop">
+            <img class="activator img" src='<?= $cocktail_image ?>' alt='black-velvet' />
+        </div>
+        <div class="card-content">
+            <span class="card-title activator orange-text darken-4 truncate center">
+                <?= $cocktail_name ?>
+                <br />
+                <i class="material-icons center">more_vert</i>
+            </span>
+        </div>
+        <div class="card-reveal transparence">
+            <span class="card-title orange-text darken-4 center">
+                <?= $cocktail_name ?>
+                <br />
+                <i class="material-icons center">close</i>
+            </span>
+            <p><?= $cocktail_description ?></p>
+        </div>
+        <div class='card-action'>
+            <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
+            <a href='#'><span class="blue-text">Supprimer du panier</span></a>
+        </div>
+    </div>
+</div>
+
 <?php
     }
 }
