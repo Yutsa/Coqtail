@@ -103,27 +103,34 @@ function displayCocktail($recette)
         !empty($cocktail_image))
     {
 ?>
-    <div class='col s6 m3'>
-        <div class='card'>
-            <div class='card-image'>
-                <img src='<?= $cocktail_image ?>' alt='black-velvet' />
-            </div>
-            <div class='card-content'>
-                <div class="center-align">
-                    <span class='card-title orange-text darken-4'>
-                        <?= $cocktail_name ?>
-                    </span>
-                </div>
-                <p>
-                    <?= $cocktail_description ?>
-                </p>
-            </div>
-            <div class='card-action'>
-                <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter au panier</span></button>
-                <button class="waves-effect waves-light btn"><span class="white-text">Supprimer du panier</span></button>
-            </div>
+
+<div class='col s12 m6 l3'>
+    <div class="card sticky-action">
+        <div class="card-image waves-effect waves-block waves-light crop">
+            <img class="activator img" src='<?= $cocktail_image ?>' alt='black-velvet' />
+        </div>
+        <div class="card-content">
+            <span class="card-title activator orange-text darken-4 truncate center">
+                <?= $cocktail_name ?>
+                <br />
+                <i class="material-icons center">more_vert</i>
+            </span>
+        </div>
+        <div class="card-reveal transparence">
+            <span class="card-title orange-text darken-4 center">
+                <?= $cocktail_name ?>
+                <br />
+                <i class="material-icons center">close</i>
+            </span>
+            <p><?= $cocktail_description ?></p>
+        </div>
+        <div class='card-action'>
+            <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter au panier</span></button>
+            <button class="waves-effect waves-light btn"><span class="white-text">Supprimer du panier</span></button>
         </div>
     </div>
+</div>
+
 <?php
     }
 }
