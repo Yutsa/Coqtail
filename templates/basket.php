@@ -20,6 +20,11 @@
     <body>
         <?php include_once 'menu.inc.php' ?>
 
+        <?php
+            $basket =  getUserBasket();
+            echo $basket[0]["titre"];
+        ?>
+
     <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="../static/js/materialize.min.js"></script>
     <script src="../static/js/custom.js" charset="utf-8"></script>

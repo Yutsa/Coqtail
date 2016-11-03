@@ -90,14 +90,14 @@ function displayCocktail($recette)
 {
     $cocktail_name = $recette["titre"];
     $cocktail_description = $recette["preparation"];
-        
+
     //Get the image's path
     $cocktail_image = "../static/img/" . ucfirst(str_replace(' ', '_', $cocktail_name)) . ".jpg";
-    
+
     // If the image doesn't exist take a generic image
     if (!file_exists($cocktail_image))
         $cocktail_image = "../static/img/Cuba_libre.jpg";
-    
+
     // If it's ok, display the card
     if (!empty($cocktail_name) && !empty($cocktail_description) &&
         !empty($cocktail_image))
@@ -119,8 +119,8 @@ function displayCocktail($recette)
                 </p>
             </div>
             <div class='card-action'>
-                <a href='#' class="addToBasket"><span class="blue-text">Ajouter au panier</span></a>
-                <a href='#'><span class="blue-text">Supprimer du panier</span></a>
+                <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter au panier</span></button>
+                <button class="waves-effect waves-light btn"><span class="white-text">Supprimer du panier</span></button>
             </div>
         </div>
     </div>

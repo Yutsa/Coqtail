@@ -2,6 +2,7 @@
   include_once("functions.inc.php");
   include_once("donnees.inc.php");
   define("indexFilePath", "../data/accounts_index");
+
   /**
   * return the basket of the current user
   * @return basket of the user
@@ -13,7 +14,7 @@
       $userDataFilePath = "../data/" . $userDataFileName;
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
-      fclose($userDataFilePath);
+      fclose($userDataFile);
       return $userData["basket"];
     }
     else {
@@ -41,10 +42,10 @@
       $userDataFile = fopen($userDataFilePath, "r");
       $userData = unserialize(fgets($userDataFile));
       $userData["basket"][] = $recipe;
-      fclose($userDataFilePath);
+      fclose($userDataFile);
       $userDataFile = fopen($userDataFilePath, "w");
       fwrite($userDataFile, serialize($userData));
-      fclose($userDataFilePath);
+      fclose($userDataFile);
     }
     else {
       $userBasket = unserialize($_COOKIE["userBasket"]);
@@ -87,8 +88,8 @@
 if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
-    echo ($_POST["titre"]);
-    //addRecipeBasket($recipe);
+    //echo ($_POST["titre"]);
+    addRecipeBasket($recipe);
 }
 
  ?>
