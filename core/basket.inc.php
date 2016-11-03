@@ -2,6 +2,7 @@
   include_once("functions.inc.php");
   include_once("donnees.inc.php");
   define("indexFilePath", "../data/accounts_index");
+
   /**
   * return the basket of the current user
   * @return basket of the user
@@ -126,8 +127,8 @@
 if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
-    echo ($_POST["titre"]);
-    //addRecipeBasket($recipe);
+    //echo ($_POST["titre"]);
+    addRecipeBasket($recipe);
 }
 
  ?>

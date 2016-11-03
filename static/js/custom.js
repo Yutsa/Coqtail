@@ -16,10 +16,10 @@ $('body').on('click', 'div.collapsible-header', function() {
 
     var nextCollapsible = $(this).next();
     var categorie = $(this).text();
-    
+
     $("div.collapsible-header").removeClass('blue');
     $(this).addClass('blue');
-        
+
     $.post(url, { cat : categorie }, function(data) {
         nextCollapsible.html(data);
 
@@ -27,15 +27,17 @@ $('body').on('click', 'div.collapsible-header', function() {
             accordion: true
         });
     });
-    
+
     var url2 = '/Projet/core/ajax_display_recette.php';
     $.post(url2, { cat : categorie }, function(data) {
         $("div#recette").html(data);
     });
 });
 
-$('body').on('click', 'a.addToBasket', function() {
+$('body').on('click', 'button.addToBasket', function() {
     var titre = $(this).parent().parent().children().next().children().children(".card-title").text();
+
+    titre = titre.trim();
 
     var url = "/Projet/core/basket.inc.php";
 
