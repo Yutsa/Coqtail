@@ -2,12 +2,87 @@
 
 use PHPUnit\Framework\TestCase;
 
+
 class BasketTest extends TestCase
 {
+
+    private $mail = "robertrobert@gmail.com";
+    private $pwd = "pwdd";
+
     public function testGetCocktailByName()
     {
+        global $Recettes;
         $cocktail = getCocktailByName("Aperol Spritz : cocktail italien pétillant", $Recettes);
-        $this->assertTrue($cocktail["preparation"] == "Préparer la quantité de cocktail souhaitée en respectant les proportions ! Garnir de glaçons et d\'un morceau d\'orange (sanguine si possible). Santé !");
+        $this->assertTrue($cocktail == $Recettes[1]);
+    }
+
+    public function signUpUser()
+    {
+        session_start();
+        $hashedPassword = password_hash($this->pwd, PASSWORD_BCRYPT);
+
+        $user = array(
+            "email" => $this->mail,
+            "password" => $hashedPassword,
+            "basket" => array()
+        );
+
+        $indexPath = realpath(dirname(__FILE__) .
+            "/../data/") . "/testIndex";
+
+        addEntryToAccountIndex($this->mail, $indexPath);
+
+        $dataFilePath = realpath(dirname(__FILE__) .
+            "/../data/") . "/" . $this->mail;
+
+        storeUserData($dataFilePath, $user);
+    }
+
+    public function connectUser()
+    {
+
+        $indexPath = realpath(dirname(__FILE__) .
+            "/../data/") . "/testIndex";
+
+        $dataFilePath = getUsersDataFile($this->mail,
+             $indexPath);
+
+        $_SESSION["userDataFileName"] = $dataFilePath;
+    }
+
+    public function removeFiles()
+    {
+        $indexPath = realpath(dirname(__FILE__) .
+            "/../data/") . "/testIndex";
+
+        $dataFilePath = realpath(dirname(__FILE__) .
+            "/../data/") . "/" . $this->mail;
+
+        unlink($indexPath);
+        unlink($dataFilePath);
+    }
+
+    public function testAddToBasketConnected()
+    {
+        global $Recettes;
+        $this->signUpUser();
+        $this->connectUser();
+        $this->assertTrue(isConnected());
+        addRecipeBasket($Recettes[0]);
+        $basket = getUserBasket();
+        $this->assertTrue($Recettes[0] == $basket[0]);
+        $this->removeFiles();
+    }
+
+    public function testAddToBasketNotConnected()
+    {
+        global $Recettes;
+        setcookie("userBasket",serialize($Recettes[1]), time()+60*60*25*30);
+        $basket = getUserBasket();
+        print_r($basket[0]);
+        print_r($Recettes[1]);
+        $this->assertTrue($basket[0] == $Recettes[1]);
+
     }
 }
 
