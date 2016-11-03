@@ -44,7 +44,7 @@
       fclose($userDataFile);
       $userDataFile = fopen($userDataFilePath, "w");
       fwrite($userDataFile, serialize($userData));
-      fclose($userDataFilePath);
+      fclose($userDataFile);
     }
     else {
       $userBasket = unserialize($_COOKIE["userBasket"]);
