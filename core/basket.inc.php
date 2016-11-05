@@ -106,29 +106,27 @@
   * Display all the recipes of the user's basket logged or not
   **/
   function displayBasket(){
-    $userBasket = getUserBasket();
-    echo 'Test1';
-    if(isConnected()){
-      echo 'Test2';
+      $userBasket = getUserBasket();
+      $i = 0;
       foreach ($userBasket as $recipe) {
-        echo 'Test2.1';
-        displayCocktail($recipe);
+          if ($i % 4 === 0)
+          echo ('<div class="row">');
+
+          // Display the recette
+          displayCocktail($recipe);
+
+          // End of the div 'row'
+          if ($i % 4 === 3)
+          echo ("</div>");
+
+          $i++;
       }
-    }
-    else{
-      echo 'Test3';
-      foreach ($userBasket as $recipe) {
-        echo 'Test3.1';
-        displayCocktail($recipe);
-      }
-    }
   }
 
 if (isset($_POST["titre"]))
 {
     $recipe = getCocktailByName($_POST["titre"], $Recettes);
     addRecipeBasket($recipe);
-    print_r(getUserBasket());
 }
 
  ?>
