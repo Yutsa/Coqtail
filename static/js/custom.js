@@ -11,8 +11,13 @@ $(document).ready(function(){
 
 $(".button-collapse").sideNav();
 
+/*
+    Event listener when the user clicks on a category.
+    It displays the subcategories and the cocktails of this
+    category, using ajax.
+*/
 $('body').on('click', 'div.collapsible-header', function() {
-    var url = '/Projet/core/ajax.php';
+    var urlDisplaySubcategories = '/Projet/core/ajax_display_subcategories.php';
 
     var nextCollapsible = $(this).next();
     var categorie = $(this).text();
@@ -20,7 +25,7 @@ $('body').on('click', 'div.collapsible-header', function() {
     $("div.collapsible-header").removeClass('blue');
     $(this).addClass('blue');
 
-    $.post(url, { cat : categorie }, function(data) {
+    $.post(urlDisplaySubcategories, { cat : categorie }, function(data) {
         nextCollapsible.html(data);
 
         nextCollapsible.children().collapsible({
@@ -28,8 +33,8 @@ $('body').on('click', 'div.collapsible-header', function() {
         });
     });
 
-    var url2 = '/Projet/core/ajax_display_recette.php';
-    $.post(url2, { cat : categorie }, function(data) {
+    var urlDisplayRecipes = '/Projet/core/ajax_display_recette.php';
+    $.post(urlDisplayRecipes, { cat : categorie }, function(data) {
         $("div#recette").html(data);
     });
 });
