@@ -12,6 +12,8 @@ include_once(realpath(dirname(__FILE__) .
         <meta charset="utf-8">
         <title>Coq'Tail - Rechercher un cocktail</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Ne fonctionnera pas si le projet n'est pas dans le dossier
+            "Projet" sur les ordinateurs de la fac. -->
         <link href="/Projet/static/css/style.css" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
