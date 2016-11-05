@@ -127,8 +127,18 @@ function displayCocktail($recette)
             <p><?= $cocktail_description ?></p>
         </div>
         <div class='card-action'>
+            <?php
+                if (searchRecipeInBasket($recette) == -1)
+                {
+            ?>
             <button class="addToBasket waves-effect waves-light btn"><span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span></button>
+            <?php }
+            else
+            {
+
+            ?>
             <button class="waves-effect waves-light btn"><span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span></button>
+            <?php } ?>
         </div>
     </div>
 </div>
