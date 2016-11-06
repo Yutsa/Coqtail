@@ -39,16 +39,37 @@ $('body').on('click', 'div.collapsible-header', function() {
     });
 });
 
-$('body').on('click', 'button.addToBasket', function() {
-    var titre = $(this).parent().prev().children(".card-title").children(".title").text();
+/**
+* A function that gets the title of the coktail that has been clicked on.
+* @param cocktail The button of the cocktail you want to get the title of.
+* @return The title of the cocktail
+**/
+function getTitle(cocktail) {
+    return $(cocktail).parent().prev().children(".card-title").children(".title").text();
+}
 
+/**
+* A function that sends the Ajax request to either add or remove a cocktaial
+* from the basket.
+* @param action The action to perform, either "add" or "remove".
+* @param cocktailButton The object of the button that has been clicked.
+**/
+function sendAjaxModifyBasket(action, cocktailButton)
+{
+    var titre = getTitle(cocktailButton);
     titre = titre.trim();
 
-//    console.log(titre);
-
     var url = "/Projet/core/basket.inc.php";
-
-    $.post(url, {titre: titre}, function(data) {
+    console.log(titre);
+    $.post(url, {titre: titre, action: action}, function(data) {
         console.log(data);
     });
+}
+
+$('body').on('click', 'button.addToBasket', function() {
+    sendAjaxModifyBasket("add", this);
+});
+
+$('body').on('click', 'button.removeFromBasket', function() {
+    sendAjaxModifyBasket("remove", this);
 });

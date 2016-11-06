@@ -137,7 +137,7 @@ function displayCocktail($recette)
             {
 
             ?>
-            <button class="waves-effect waves-light btn-flat indigo darken-3"><span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span></button>
+            <button class="removeFromBasket waves-effect waves-light btn-flat indigo darken-3"><span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span></button>
             <?php } ?>
         </div>
     </div>

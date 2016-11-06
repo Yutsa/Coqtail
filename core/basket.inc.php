@@ -125,8 +125,16 @@
 
 if (isset($_POST["titre"]))
 {
-    $recipe = getCocktailByName($_POST["titre"], $Recettes);
-    addRecipeBasket($recipe);
+    if ($_POST["action"] == "add")
+    {
+        $recipe = getCocktailByName($_POST["titre"], $Recettes);
+        addRecipeBasket($recipe);
+        echo "add";
+    }
+    else if ($_POST["action"] == "remove")
+    {
+        echo "remove";
+    }
 }
 
  ?>
