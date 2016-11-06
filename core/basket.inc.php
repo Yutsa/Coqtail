@@ -85,7 +85,7 @@
     return -1;
   }
 
-  function removeRecipeBasket($recipe){
+  function removeRecipeFromBasket($recipe){
     if(($index = searchRecipeInBasket($recipe))!=-1){
       if(isConnected()){
         //TODO
@@ -123,16 +123,21 @@
       }
   }
 
+/*
+* This script is executed by the Ajax call when a cocktail is to be added or
+* removed from the user's basket.
+*/
 if (isset($_POST["titre"]))
 {
+    $recipe = getCocktailByName($_POST["titre"], $Recettes);
     if ($_POST["action"] == "add")
     {
-        $recipe = getCocktailByName($_POST["titre"], $Recettes);
         addRecipeBasket($recipe);
         echo "add";
     }
     else if ($_POST["action"] == "remove")
     {
+        removeRecipeFromBasket($recipe);
         echo "remove";
     }
 }
