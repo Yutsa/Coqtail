@@ -17,7 +17,7 @@ define('ROOT_URI', "/Projet");
 
 <nav class="indigo darken-3">
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Coq'tail</a>
+        <a href="<?php echo ROOT_URI ?>" class="brand-logo">Coq'tail</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">

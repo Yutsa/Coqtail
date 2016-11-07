@@ -1,6 +1,9 @@
 <?php
-// File call in custom.js
-//include_once("functions.inc.php");
+/*
+    Ajax call endpoint to display the subcategories
+    of the clicked category in the menu.
+*/
+
 include_once("functions_ingredient_menu.inc.php");
 include_once("donnees.inc.php");
 

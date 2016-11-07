@@ -19,18 +19,14 @@
     </head>
     <body>
         <?php include_once 'menu.inc.php' ?>
-
-            <?php
-            $basket =  getUserBasket();
-            echo $basket[0]["titre"];
+        <h1 class="center">Votre panier : </h1>
+        <?php
+        displayBasket();
         ?>
 
     <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="../static/js/materialize.min.js"></script>
     <script src="../static/js/custom.js" charset="utf-8"></script>
     <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
-    <?php
-      displayBasket();
-    ?>
     </body>
 </html>
