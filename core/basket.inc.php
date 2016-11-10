@@ -28,7 +28,7 @@
   function createCookieBasket()
   {
     $userBasket = array();
-    setcookie("userBasket",serialize($userBasket), time()+60*60*25*30);
+    setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
   }
 
   /**
@@ -50,7 +50,7 @@
     else {
       $userBasket = unserialize($_COOKIE["userBasket"]);
       $userBasket[] = $recipe;
-      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30);
+      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
     }
   }
 
