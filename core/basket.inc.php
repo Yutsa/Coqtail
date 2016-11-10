@@ -72,6 +72,7 @@
         }
         $index++;
       }
+      fclose($userDataFile);
     }
     else{
       $userBasket = unserialize($_COOKIE["userBasket"]);
@@ -85,10 +86,28 @@
     return -1;
   }
 
+  /**
+  * Remove a recipe in the user's basket
+  * @param $recipe the recipe to remove
+  **/
   function removeRecipeFromBasket($recipe){
+
     if(($index = searchRecipeInBasket($recipe))!=-1){
       if(isConnected()){
-        //TODO
+        $userDataFileName = $_SESSION["userDataFileName"];
+        $userDataFilePath = "../data/" . $userDataFileName;
+        $userDataFile = fopen($userDataFilePath, "r");
+        $userData = unserialize(fgets($userDataFile));
+        unset($userData["basket"][array_search($recipe, $userData["basket"])]);
+        fclose($userDataFile);
+        $userDataFile = fopen($userDataFilePath, "w+");
+        fwrite($userDataFile, serialize($userData));
+        fclose($userDataFile);
+      }
+      else{
+        $userBasket = unserialize($_COOKIE["userBasket"]);
+        unset($userBasket[array_search($recipe, $userBasket)]);
+        setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
       }
     }
   }
@@ -114,6 +133,7 @@
 
           // Display the recette
           displayCocktail($recipe);
+
 
           // End of the div 'row'
           if ($i % 4 === 3)
