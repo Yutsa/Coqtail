@@ -23,12 +23,36 @@
   }
 
   /**
+  * Merges the cookie basket with the connected basket
+  **/
+  function basketFusion(){
+    $userDataFileName = $_SESSION["userDataFileName"];
+    $userDataFilePath = $userDataFileName;
+    $userDataFile = fopen($userDataFilePath, "r+");
+    $userData = unserialize(fgets($userDataFile));
+    fclose($userDataFile);
+    $userBasketConnected = $userData["basket"];
+    $userBasketCookie = unserialize($_COOKIE["userBasket"]);
+    foreach ($userBasketCookie as $recipe) {
+      if(!in_array($recipe,$userBasketConnected)){
+        $userData["basket"][]=$recipe;
+      }
+    }
+    $userDataFile = fopen($userDataFilePath, "w+");
+    fwrite($userDataFile, serialize($userData));
+    fclose($userDataFile);
+
+  }
+
+  /**
   * Create the cookie that contains the basket of the user not logged
   **/
   function createCookieBasket()
   {
-    $userBasket = array();
-    setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
+    if(!isset($_COOKIE["userBasket"])){
+      $userBasket = array();
+      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
+    }
   }
 
   /**

@@ -24,11 +24,6 @@ include_once(realpath(dirname(__FILE__) .
     </head>
     <body>
         <?php include_once 'menu.inc.php' ?>
-        <?php
-            print_r(unserialize($_COOKIE["userBasket"]));
-            var_dump($_COOKIE["userBasket"]);
-            print_r($_SESSION);
-        ?>
 
         <div class="row">
             <!-- Menu -->

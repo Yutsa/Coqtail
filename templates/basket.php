@@ -20,9 +20,9 @@
     <body>
         <?php include_once 'menu.inc.php' ?>
         <h1 class="center">Votre panier : </h1>
-        <?php
-        displayBasket();
-        ?>
+          <?php
+          displayBasket();
+          ?>
 
     <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="../static/js/materialize.min.js"></script>
