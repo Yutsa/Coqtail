@@ -41,7 +41,8 @@
     $userDataFile = fopen($userDataFilePath, "w+");
     fwrite($userDataFile, serialize($userData));
     fclose($userDataFile);
-
+    unset($_COOKIE["userBasket"]);
+    setcookie("userBasket",null,-1, "/Projet");
   }
 
   /**

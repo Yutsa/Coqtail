@@ -4,6 +4,8 @@ include_once(realpath(dirname(__FILE__) .
                       "/../core/functions_ingredient_menu.inc.php"));
 include_once(realpath(dirname(__FILE__) .
                       "/../core/donnees.inc.php"));
+include_once("../core/basket.inc.php");
+createCookieBasket();
 ?>
 
 <!DOCTYPE html>
