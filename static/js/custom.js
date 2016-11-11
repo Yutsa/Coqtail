@@ -68,23 +68,17 @@ function sendAjaxModifyBasket(action, cocktailButton)
 
 function changeButton(button)
 {
-    // We get the first class of the button to check what kind of button it is.
-    var buttonFirstClass = $(button).attr("class").split(" ")[0];
-    var buttonClasses;
-    var buttonContent;
-    if (buttonFirstClass == "addToBasket")
+    if ($(button).hasClass("addToBasket"))
     {
-        buttonClasses = "removeFromBasket waves-effect waves-light btn-flat indigo darken-3";
-        buttonContent = '<span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span>';
+        $(button).children("span").html('Supprimer <i class="material-icons center">shopping_cart</i>');
     }
     else
     {
-        buttonClasses = "addToBasket waves-effect waves-light btn-flat indigo darken-3";
-        buttonContent = '<span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span>';
+        $(button).children("span").html('Ajouter <i class="material-icons center">shopping_cart</i>');
     }
 
-    $(button).attr("class", buttonClasses);
-    $(button).html(buttonContent);
+    $(button).toggleClass("addToBasket");
+    $(button).toggleClass("removeFromBasket");
 }
 
 $('body').on('click', 'button.addToBasket', function() {
