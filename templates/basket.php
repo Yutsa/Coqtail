@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Coq'Tail - S'enregistrer</title>
+        <title>Coq'Tail - Panier</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
