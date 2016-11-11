@@ -66,10 +66,33 @@ function sendAjaxModifyBasket(action, cocktailButton)
     });
 }
 
+function changeButton(button)
+{
+    // We get the first class of the button to check what kind of button it is.
+    var buttonFirstClass = $(button).attr("class").split(" ")[0];
+    var buttonClasses;
+    var buttonContent;
+    if (buttonFirstClass == "addToBasket")
+    {
+        buttonClasses = "removeFromBasket waves-effect waves-light btn-flat indigo darken-3";
+        buttonContent = '<span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span>';
+    }
+    else
+    {
+        buttonClasses = "addToBasket waves-effect waves-light btn-flat indigo darken-3";
+        buttonContent = '<span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span>';
+    }
+
+    $(button).attr("class", buttonClasses);
+    $(button).html(buttonContent);
+}
+
 $('body').on('click', 'button.addToBasket', function() {
     sendAjaxModifyBasket("add", this);
+    changeButton(this);
 });
 
 $('body').on('click', 'button.removeFromBasket', function() {
     sendAjaxModifyBasket("remove", this);
+    changeButton(this);
 });
