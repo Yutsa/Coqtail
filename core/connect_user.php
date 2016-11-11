@@ -1,4 +1,5 @@
 <?php
+    include_once("basket.inc.php");
     session_start();
     /*
     * This page is handling the connection process. It checks if the user is
@@ -58,6 +59,7 @@
             }
 
             $_SESSION["userDataFileName"] = $dataFilePath;
+            basketFusion();
             header("Location: ../index.php");
         }
         catch (Exception $e)

@@ -25,5 +25,5 @@ Les paniers des comptes doivent donc être stockés aussi.
 Créer le système de navigation d'ingrédients
 ============================================
 
-Créer le "moteur de recherce"
+Créer le "moteur de recherche"
 =============================

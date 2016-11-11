@@ -1,43 +1,52 @@
-$(document).ready(function() {
-    $(".ingredients").sideNav();
-});
-
-
 $(document).ready(function(){
     $('.collapsible').collapsible({
         accordion : false
     });
-});
 
-$(".button-collapse").sideNav();
+    $(".ingredients").sideNav();
 
-/*
+    $(".button-collapse").sideNav();
+
+    $('body').on('click', 'button.addToBasket', function() {
+        sendAjaxModifyBasket("add", this);
+        changeButton(this);
+    });
+
+    $('body').on('click', 'button.removeFromBasket', function() {
+        sendAjaxModifyBasket("remove", this);
+        changeButton(this);
+    });
+
+    /*
     Event listener when the user clicks on a category.
     It displays the subcategories and the cocktails of this
     category, using ajax.
-*/
-$('body').on('click', 'div.collapsible-header', function() {
-    var urlDisplaySubcategories = '/Projet/core/ajax_display_subcategories.php';
+    */
+    $('body').on('click', 'div.collapsible-header', function() {
+        var urlDisplaySubcategories = '/Projet/core/ajax_display_subcategories.php';
 
-    var nextCollapsible = $(this).next();
-    var categorie = $(this).text();
+        var nextCollapsible = $(this).next();
+        var categorie = $(this).text();
 
-    $("div.collapsible-header").removeClass('blue');
-    $(this).addClass('blue');
+        $("div.collapsible-header").removeClass('blue');
+        $(this).addClass('blue');
 
-    $.post(urlDisplaySubcategories, { cat : categorie }, function(data) {
-        nextCollapsible.html(data);
+        $.post(urlDisplaySubcategories, { cat : categorie }, function(data) {
+            nextCollapsible.html(data);
 
-        nextCollapsible.children().collapsible({
-            accordion: true
+            nextCollapsible.children().collapsible({
+                accordion: true
+            });
+        });
+
+        var urlDisplayRecipes = '/Projet/core/ajax_display_recette.php';
+        $.post(urlDisplayRecipes, { cat : categorie }, function(data) {
+            $("div#recette").html(data);
         });
     });
-
-    var urlDisplayRecipes = '/Projet/core/ajax_display_recette.php';
-    $.post(urlDisplayRecipes, { cat : categorie }, function(data) {
-        $("div#recette").html(data);
-    });
 });
+
+
 
 /**
 * A function that gets the title of the coktail that has been clicked on.
@@ -66,10 +75,17 @@ function sendAjaxModifyBasket(action, cocktailButton)
     });
 }
 
-$('body').on('click', 'button.addToBasket', function() {
-    sendAjaxModifyBasket("add", this);
-});
+function changeButton(button)
+{
+    if ($(button).hasClass("addToBasket"))
+    {
+        $(button).children("span").html('Supprimer <i class="material-icons center">shopping_cart</i>');
+    }
+    else
+    {
+        $(button).children("span").html('Ajouter <i class="material-icons center">shopping_cart</i>');
+    }
 
-$('body').on('click', 'button.removeFromBasket', function() {
-    sendAjaxModifyBasket("remove", this);
-});
+    $(button).toggleClass("addToBasket");
+    $(button).toggleClass("removeFromBasket");
+}

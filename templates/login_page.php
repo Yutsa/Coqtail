@@ -1,4 +1,6 @@
 <?php
+include_once("../core/basket.inc.php");
+createCookieBasket();
     // If the user is connected, this page should redirect to the home page.
     $errorMessage = "";
     if (isset($_SESSION["username"]))

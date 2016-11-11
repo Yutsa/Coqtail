@@ -27,12 +27,31 @@ include_once("core/functions.inc.php");
         <?php include_once("templates/menu.inc.php"); ?>
         <main class="container">
             <div class="row">
-                <h1 class="col s12">Bienvenue sur Coq'tail le site de recettes de cocktail</h1>
+                <h1 class="col s12 center">Bienvenue sur Coq'tail le site de recettes de cocktail</h1>
             </div>
             <div class="row">
-                <p class="col s12">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+                <div class="col s4">
+                    <h3 class="center">Parcour par ingrédients</h3>
+                    <p>
+                        Coq'tail vous permet de parcourir des recettes de
+                        cocktails par ingrédients.
+                    </p>
+                </div>
+                <div class="col s4">
+                    <h3 class="center">Enregistrez vos cocktails préférés</h3>
+                    <p>
+                        Grâce au système de panier vous ne perdrez plus
+                        jamais vos recettes de cocktails préférés.
+                    </p>
+                </div>
+                <div class="col s4">
+                    <h3 class="center">Recherche avancée de cocktail</h3>
+                    <p>
+                        Grâce à la barre de recherche vous pouvez trouver
+                        plus précisemment le cocktail que vous cherchez en
+                        ajoutant et excluant des ingrédients !
+                    </p>
+                </div>
             </div>
         </main>
 

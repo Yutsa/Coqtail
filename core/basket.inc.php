@@ -23,12 +23,37 @@
   }
 
   /**
+  * Merges the cookie basket with the connected basket
+  **/
+  function basketFusion(){
+    $userDataFileName = $_SESSION["userDataFileName"];
+    $userDataFilePath = $userDataFileName;
+    $userDataFile = fopen($userDataFilePath, "r+");
+    $userData = unserialize(fgets($userDataFile));
+    fclose($userDataFile);
+    $userBasketConnected = $userData["basket"];
+    $userBasketCookie = unserialize($_COOKIE["userBasket"]);
+    foreach ($userBasketCookie as $recipe) {
+      if(!in_array($recipe,$userBasketConnected)){
+        $userData["basket"][]=$recipe;
+      }
+    }
+    $userDataFile = fopen($userDataFilePath, "w+");
+    fwrite($userDataFile, serialize($userData));
+    fclose($userDataFile);
+    unset($_COOKIE["userBasket"]);
+    setcookie("userBasket",null,-1, "/Projet");
+  }
+
+  /**
   * Create the cookie that contains the basket of the user not logged
   **/
   function createCookieBasket()
   {
-    $userBasket = array();
-    setcookie("userBasket",serialize($userBasket), time()+60*60*25*30);
+    if(!isset($_COOKIE["userBasket"])){
+      $userBasket = array();
+      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
+    }
   }
 
   /**
@@ -50,7 +75,7 @@
     else {
       $userBasket = unserialize($_COOKIE["userBasket"]);
       $userBasket[] = $recipe;
-      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30);
+      setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
     }
   }
 
@@ -72,6 +97,7 @@
         }
         $index++;
       }
+      fclose($userDataFile);
     }
     else{
       $userBasket = unserialize($_COOKIE["userBasket"]);
@@ -85,10 +111,28 @@
     return -1;
   }
 
+  /**
+  * Remove a recipe in the user's basket
+  * @param $recipe the recipe to remove
+  **/
   function removeRecipeFromBasket($recipe){
+
     if(($index = searchRecipeInBasket($recipe))!=-1){
       if(isConnected()){
-        //TODO
+        $userDataFileName = $_SESSION["userDataFileName"];
+        $userDataFilePath = "../data/" . $userDataFileName;
+        $userDataFile = fopen($userDataFilePath, "r");
+        $userData = unserialize(fgets($userDataFile));
+        unset($userData["basket"][array_search($recipe, $userData["basket"])]);
+        fclose($userDataFile);
+        $userDataFile = fopen($userDataFilePath, "w+");
+        fwrite($userDataFile, serialize($userData));
+        fclose($userDataFile);
+      }
+      else{
+        $userBasket = unserialize($_COOKIE["userBasket"]);
+        unset($userBasket[array_search($recipe, $userBasket)]);
+        setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
       }
     }
   }
@@ -114,6 +158,7 @@
 
           // Display the recette
           displayCocktail($recipe);
+
 
           // End of the div 'row'
           if ($i % 4 === 3)
