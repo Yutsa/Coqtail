@@ -59,3 +59,15 @@ Nous avons décidé d'utiliser PHPUnit pour effectuer des tests unitaires
 et s'assurer de la validité de nos fonctions. Cela permet également de
 vérifier que tout fonctionne toujours après un changement
 d'implémentation d'un composant du site par exemple.
+
+Taille cookies
+===============
+
+On ne peut mettre que 5 à 6 recettes dans son panier sans être connecter à
+cause de la taille maximum des cookies.
+
+Cela est dû au fait que l'on stock l'array représentant une recette que l'on
+sérialise. Cela prend donc beaucoup de place.
+
+Cependant le fait d'être limité en étant non connecté pousse l'utilisateur à
+s'inscrire ce qui peut être positif.
