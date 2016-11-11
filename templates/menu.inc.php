@@ -21,13 +21,7 @@ define('ROOT_URI', "/Projet");
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><form>
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-                </form></li>
+            <li><a href="<?php echo ROOT_URI . "/templates/search.php"?>">Recherche</a></li>
             <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
             <li><a href="<?php echo ROOT_URI . "/templates/cocktail_display.php"?>">Parcourir Ingrédients</a></li>
 
@@ -56,14 +50,7 @@ define('ROOT_URI', "/Projet");
                { ?>
         <li><a href="<?php echo ROOT_URI . "/core/logout.php" ?>">Se déconnecter</a></li>
         <?php } ?>
-        <li><form>
-            <div class="input-field">
-                <input id="search" type="search" required>
-                <label for="search"><i class="material-icons" style="color: grey;">search</i></label>
-                <i class="material-icons">close</i>
-            </div>
-            </form>
-        </li>
+        <li><a href="<?php echo ROOT_URI . "/templates/search.php"?>">Recherche</a></li>
     </ul>
 
     </div>

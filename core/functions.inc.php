@@ -33,6 +33,8 @@ function getAllSubcategories($searchedCategory, &$hierarchie, &$ingredientsArray
             }
         }
     }
+
+    $ingredientsArray = array_unique($ingredientsArray);
 }
 
 //function getFirstSubcategories(&$hierarchie, &$firstSubCategory)
@@ -60,6 +62,28 @@ function getAllCocktailsWithIngredient($ingredient, &$hierarchy, &$recettes)
         // to check if it's in the selected $ingredients.
         foreach ($recette["index"] as $ingredientRecette) {
             if (array_search($ingredientRecette, $ingredients) !== false)
+            {
+                $ResRecettes[] = $recette;
+            }
+        }
+    }
+
+    $ResRecettes = array_unique($ResRecettes, SORT_REGULAR);
+    return $ResRecettes;
+}
+
+function getAllCocktailsWithoutIngredient($ingredient, &$hierarchy, &$recettes)
+{
+    $ingredients;
+    // Gets all subcategories of $ingredient and stores it in $ingredients.
+    getAllSubcategories($ingredient, $hierarchy, $ingredients);
+    // Iterates througs every $recettes to check if it has one of the
+    // selected $ingredients.
+    foreach ($recettes as $recette) {
+        // Iterates through each $ingredientRecette of the current $recette
+        // to check if it's in the selected $ingredients.
+        foreach ($recette["index"] as $ingredientRecette) {
+            if (array_search($ingredientRecette, $ingredients) === false)
             {
                 $ResRecettes[] = $recette;
             }
@@ -126,15 +150,15 @@ function displayCocktail($recette)
             </span>
             <p><?= $cocktail_description ?></p>
         </div>
-        <div class='card-action'>
+        <div class='card-action center'>
             <?php
-                if (searchRecipeInBasket($recette) == -1)
-                {
+        if (searchRecipeInBasket($recette) == -1)
+        {
             ?>
             <button class="addToBasket waves-effect waves-light btn-flat indigo darken-3"><span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span></button>
             <?php }
-            else
-            {
+     else
+     {
 
             ?>
             <button class="removeFromBasket waves-effect waves-light btn-flat indigo darken-3"><span class="white-text">Supprimer <i class="material-icons center">shopping_cart</i></span></button>
