@@ -1,41 +1,41 @@
 var stateData = [];
 
+//Function to init the auto complete on input class="autocomplete"
 function initAutoComplete() {
-    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+    var input_selector = 'input[type=text]';
 
-    /*************************
-        * Auto complete plugin  *
-        *************************/
-
+    //For each input selector (in reality there is only one input)
     $(input_selector).each(function() {
         var $input = $(this);
 
-        if ($input.hasClass('autocomplete')) {
+        if ($input.hasClass('autocomplete')) 
+        {
+            //Take array of autocomplete word for this input
             var $array = $input.data('array'), 
                 $inputDiv = $input.closest('.input-field'); // Div to append on
+
             // Check if "data-array" isn't empty
-            if ($array !== '') {
+            if ($array !== '') 
+            {
                 // Create html element
                 var $html = '<ul class="autocomplete-content hide collection">';
 
-                for (var i = 0; i < $array.length; i++) {
-                    // If path and class aren't empty add image to auto complete else create normal element
-                    if ($array[i]['path'] !== '' && $array[i]['path'] !== undefined && $array[i]['path'] !== null && $array[i]['class'] !== undefined && $array[i]['class'] !== '') 
-                    {
-                        //<a href="#!" class="collection-item">Alvin</a>
-                        $html += '<li class="autocomplete-option"><a href="#!" class="collection-item"><img src="' + $array[i]['path'] + '" class="' + $array[i]['class'] + '"><span>' + $array[i]['value'] + '</span></a></li>';
-                    }
-                    else 
-                    {
-                        $html += '<li class="autocomplete-option"><a href="#!" class="collection-item"><span>' + $array[i]['value'] + '</span></a></li>';
-                    }
+                //Iterate each word in array for initialize the list of autocomplete
+                for (var i = 0; i < $array.length; i++) 
+                {
+                    //Add each li with the name
+                    $html += '<li class="autocomplete-option"><a href="#!" class="collection-item"><span>' + $array[i]['value'] + '</span></a></li>';
                 }
-
+                
+                //Close list balise
                 $html += '</ul>';
-                $inputDiv.append($html); // Set ul in body
-                // End create html element
+                //Set ul in body
+                $inputDiv.append($html);
+                //End create html element
 
-                function highlight(string) {
+                //
+                function highlight(string) 
+                {
                     $('.autocomplete-content li').each(function() {
                         var matchStart = $(this).text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
                             matchEnd = matchStart + string.length - 1,
@@ -46,41 +46,51 @@ function initAutoComplete() {
                     });
                 }
 
-                // Perform search
+                //Perform search when push key on keyboard
                 $(document).on('keyup', $input, function() {
+                    //Get value of input
                     var $val = $input.val().trim(),
                         $select = $('.autocomplete-content');
-                    // Check if the input isn't empty
-                    $select.css('width',$input.width());
+                    
+                    $select.css('width', $input.width());
 
-                    if ($val != '') {
+                    //Check if the input isn't empty
+                    if ($val != '') 
+                    {
                         $select.children('li').addClass('hide');
                         $select.children('li').filter(function() {
                             $select.removeClass('hide'); // Show results
 
-                            // If text needs to highlighted
-                            if ($input.hasClass('highlight-matching')) {
+                            //If text needs to highlighted
+                            if ($input.hasClass('highlight-matching')) 
+                            {
                                 highlight($val);
                             }
                             var check = true;
-                            for (var i in $val) {
+                            for (var i in $val) 
+                            {
                                 if ($val[i].toLowerCase() !== $(this).text().toLowerCase()[i])
                                     check = false;
                             };
                             return check ? $(this).text().toLowerCase().indexOf($val.toLowerCase()) !== -1 : false;
                         }).removeClass('hide');
-                    } else {
+                    } 
+                    else
+                    {
                         $select.children('li').addClass('hide');
                     }
                 });
 
-                // Set input value
+                //Set input value on click
                 $('.autocomplete-option').click(function() {
 
+                    //Add chip with value of input and with class="add green" default
                     $('#list').prepend('<div class="chip add green">' + $(this).text().trim() + '<i class="close material-icons">close</i></div>');
 
+                    //Delete input value
                     $input.val('');
-
+                    
+                    //Hide ul of autocomplete words
                     $('.autocomplete-option').addClass('hide');
                 });
             } 
@@ -120,7 +130,7 @@ $('#list').on('DOMSubtreeModified click', function() {
     //Iterate though <li> and check if it has add or remove class
     $(this).children().each(function(index, element) {
         //Initialize 2 array 
-        
+
         //One with the add ingredients
         if (element.className === 'chip add green' )
         {
@@ -138,10 +148,10 @@ $('#list').on('DOMSubtreeModified click', function() {
     })
     //console.log(addElement);
     //console.log(removeElement);
-    
+
     //Ajax request for display recite match with arrays
     var url = "/Projet/core/ajax_get_search_cat.php";
-    
+
     $.post(url, {addElement : addElement, removeElement: removeElement}, function(data) { 
         //Set result in a div
         $('div#displaySearch').html(data);

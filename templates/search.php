@@ -27,30 +27,30 @@ include_once(realpath(dirname(__FILE__) .
 
         <div class="row center">
             <div class="input-field col s12">
-                <p>Ajouter un ingrédient à la recherche</p>
+                <h2 class="col s12 center">Ajouter un ingrédient à la recherche</h2>
                 <input type="text" id="autocompleteState" class="autocomplete inputFields center">
             </div>
             <div class="col s12">
                 <ul id="list">
-                    
+
                 </ul>
             </div>
             <div class="col s12 card-panel blue lighten-5">
-                    <p>Cliquez sur un élément pour l'exclure de la recherche. Cliquez sur la croix pour le supprimer.</p>
+                <p>Cliquez sur un élément pour l'exclure de la recherche. Cliquez sur la croix pour le supprimer.</p>
             </div>
             <div class="col s12" id="displaySearch">
-                
+
             </div>
         </div>
 
-       
+
         <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script type="text/javascript" src="../static/js/jquery.bind-first-0.2.2.min.js"></script>       
         <script src="../static/js/custom.js" charset="utf-8"></script>
         <script type="text/javascript" src="../static/js/search.js"></script>
         <script type="text/javascript" src="../bower_components/materialize-autocomplete/jquery.materialize-autocomplete.min.js"></script>
-        
+
 
     </body>
 </html>

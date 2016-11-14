@@ -63,7 +63,7 @@ foreach($Recettes as $recette)
     }
 
     //Check if there are ingredient to not have
-    if( isset($_POST['removeElement']))
+    if(isset($_POST['removeElement']))
     {
         //Count number of ingredient to not have
         $nbWithout = count($_POST['removeElement']);
