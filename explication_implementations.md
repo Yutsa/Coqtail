@@ -71,3 +71,8 @@ sérialise. Cela prend donc beaucoup de place.
 
 Cependant le fait d'être limité en étant non connecté pousse l'utilisateur à
 s'inscrire ce qui peut être positif.
+
+Gestion de panier qui déconne sous Safari
+==========================================
+
+POURQUOI ?!
