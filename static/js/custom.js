@@ -17,7 +17,7 @@ $(document).ready(function(){
         changeButton(this);
     });
 
-    /*
+    /**
     Event listener when the user clicks on a category.
     It displays the subcategories and the cocktails of this
     category, using ajax.

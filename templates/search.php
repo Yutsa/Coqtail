@@ -51,6 +51,5 @@ include_once(realpath(dirname(__FILE__) .
         <script type="text/javascript" src="../static/js/search.js"></script>
         <script type="text/javascript" src="../bower_components/materialize-autocomplete/jquery.materialize-autocomplete.min.js"></script>
 
-
     </body>
 </html>

@@ -30,27 +30,36 @@ include_once("core/functions.inc.php");
                 <h1 class="col s12 center">Bienvenue sur Coq'tail le site de recettes de cocktail</h1>
             </div>
             <div class="row">
-                <div class="col s4">
-                    <h3 class="center">Parcour par ingrédients</h3>
-                    <p>
-                        Coq'tail vous permet de parcourir des recettes de
-                        cocktails par ingrédients.
-                    </p>
+                <div class="col s4 center">
+                    <h3 class="center">Parcourir</h3>
+                    <div class="card blue lighten-5">
+                        <div class="card-content">
+                            <p class="light ">Coq'tail vous permet de parcourir des recettes de
+                                cocktails par ingrédients.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col s4">
-                    <h3 class="center">Enregistrez vos cocktails préférés</h3>
-                    <p>
-                        Grâce au système de panier vous ne perdrez plus
-                        jamais vos recettes de cocktails préférés.
-                    </p>
+                <div class="col s4 center">
+                    <h3 class="center">Enregistrer</h3>
+                    <div class="card blue lighten-5">
+                        <div class="card-content">
+                            <p class="light ">Grâce au système de panier vous ne perdrez plus
+                                jamais vos recettes de cocktails préférés.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col s4">
-                    <h3 class="center">Recherche avancée de cocktail</h3>
-                    <p>
-                        Grâce à la barre de recherche vous pouvez trouver
-                        plus précisemment le cocktail que vous cherchez en
-                        ajoutant et excluant des ingrédients !
-                    </p>
+                <div class="col s4 center">
+                    <h3 class="center">Rechercher</h3>
+                    <div class="card blue lighten-5">
+                        <div class="card-content">
+                            <p class="light ">Grâce à la barre de recherche vous pouvez trouver
+                                plus précisemment le cocktail que vous cherchez en
+                                ajoutant et excluant des ingrédients !
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

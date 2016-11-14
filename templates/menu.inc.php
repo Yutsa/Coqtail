@@ -20,10 +20,9 @@ define('ROOT_URI', "/Projet");
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="<?php echo ROOT_URI . "/templates/search.php"?>">Recherche</a></li>
             <li><a href="<?php echo ROOT_URI ?>">Accueil</a></li>
             <li><a href="<?php echo ROOT_URI . "/templates/cocktail_display.php"?>">Parcourir Ingrédients</a></li>
-
+            <li><a href="<?php echo ROOT_URI . "/templates/search.php"?>">Recherche</a></li>
             <li><a href="<?php echo ROOT_URI . "/templates/basket.php"?>">Panier</a></li>
             <?php if (!$connected)
 { ?>

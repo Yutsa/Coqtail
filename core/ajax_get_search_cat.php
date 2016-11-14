@@ -80,7 +80,7 @@ foreach($Recettes as $recette)
     }
 
     //If there are all ingredient need and all ingredient don't need
-    if ($okWith == $nbWith && $okWithout == $nbWithout)
+    if ($okWith == $nbWith && $okWithout == $nbWithout && ($nbWithout > 0 || $nbWith > 0))
     {
         displayCocktail($recette);
     }

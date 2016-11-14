@@ -28,16 +28,6 @@ createCookieBasket();
         <?php include_once 'menu.inc.php' ?>
 
         <div class="row">
-            <div class="input-field col s12">
-                <label class="active">State</label>
-                <input type="text" id="autocompleteState" class="autocomplete inputFields">
-                <ul>
-                    
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
             <!-- Menu -->
             <div class="menu col s3 m3 l3">
                 <?php
@@ -46,8 +36,8 @@ createCookieBasket();
             </div>
             <!-- Recettes -->
             <div class="col s9 m9 l9">
-                <div id="recette" class="row">
-
+                <div id="recette" class="card-panel row center">
+                    <h5>Choisissez vos ingrédients parmis ceux proposés dans le menu, et effectuez une recette de plus en plus précise. Les recettes correspondantes seront affichée ici.</h5>
                 </div>
             </div>
         </div>
