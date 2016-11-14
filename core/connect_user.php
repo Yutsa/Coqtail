@@ -1,6 +1,6 @@
 <?php
     include_once("basket.inc.php");
-    session_start();
+    //session_start();
     /*
     * This page is handling the connection process. It checks if the user is
     * registered. If it is then it checks if the password is corrected.
