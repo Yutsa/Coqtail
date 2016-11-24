@@ -47,7 +47,6 @@ $(document).ready(function(){
 });
 
 
-
 /**
 * A function that gets the title of the coktail that has been clicked on.
 * @param cocktail The button of the cocktail you want to get the title of.

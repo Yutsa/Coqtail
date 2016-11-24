@@ -151,7 +151,7 @@ $('#list').on('DOMSubtreeModified click', function() {
 
     //Ajax request for display recite match with arrays
     var url = "/Projet/core/ajax_get_search_cat.php";
-
+    
     $.post(url, {addElement : addElement, removeElement: removeElement}, function(data) { 
         //Set result in a div
         $('div#displaySearch').html(data);

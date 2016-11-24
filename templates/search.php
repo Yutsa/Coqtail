@@ -25,7 +25,7 @@ include_once(realpath(dirname(__FILE__) .
     <body>
         <?php include_once 'menu.inc.php' ?>
 
-        <div class="row center">
+        <div class="row center container">
             <div class="input-field col s12">
                 <h2 class="col s12 center">Ajouter un ingrédient à la recherche</h2>
                 <input type="text" id="autocompleteState" class="autocomplete inputFields center">

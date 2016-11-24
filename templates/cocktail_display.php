@@ -37,7 +37,7 @@ createCookieBasket();
             <!-- Recettes -->
             <div class="col s9 m9 l9">
                 <div id="recette" class="card-panel row center">
-                    <h5>Choisissez vos ingrédients parmis ceux proposés dans le menu, et effectuez une recette de plus en plus précise. Les recettes correspondantes seront affichée ici.</h5>
+                    <h5>Choisissez vos ingrédients parmis ceux proposés dans le menu, et effectuez une recherche de plus en plus précise. Les recettes correspondantes seront affichée ici.</h5>
                 </div>
             </div>
         </div>
