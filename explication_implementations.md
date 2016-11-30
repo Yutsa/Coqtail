@@ -1,4 +1,10 @@
-Explication des choix d'implémentations
+---
+title:  Rapport Projet de Synthèse
+author: Thibert LETULLIER, Nicolas MARTIN et Édouard WILLISSECK
+geometry: margin=3cm
+---
+
+Rapport projet Web
 ----------------------------------------
 
 Processus d'inscription
@@ -7,7 +13,7 @@ Processus d'inscription
 ### Formulaire
 
 Lorsqu'un utilisateur tente de s'inscrire et que l'email choisi
-est déjà utilisé, il est alors redirigé sur la page du
+est déjà utilisée, il est alors redirigé sur la page du
 formulaire avec une indication expliquant que l'email est déjà
 utilisé.
 
@@ -17,7 +23,7 @@ utilisée dans le champ.
 
 ### Mode de stockage
 
-Nous avons choisi de stocker les informations dans des fichiers
+Nous avons choisi de stocker les informations (panier) dans des fichiers
 texte. Cela permet d'éviter l'utilisation d'une base de donnée
 et donc de faciliter le déploiement du site web sur de nouveaux
 serveurs par exemple.
@@ -42,7 +48,7 @@ Inclusion du menu
 =================
 
 Nous avons rencontré des difficultés lors de l'inclusion du
-mot de passe. En effet nous utilisions des liens relatifs,
+menu. En effet nous utilisions des liens relatifs,
 cependant la page n'était pas au même niveau hiérarchique
 dans le dossier. Par exemple l'index est à la racine mais les
 pages comme le formulaire de connexion ou d'inscription sont
@@ -72,7 +78,23 @@ sérialise. Cela prend donc beaucoup de place.
 Cependant le fait d'être limité en étant non connecté pousse l'utilisateur à
 s'inscrire ce qui peut être positif.
 
+C'est pourquoi nous avons décidé de laisser cela comme ça. Nous aurions également pu utiliser des variables de sessions pour éviter cela.
+
+Ajout/Retrait de recettes du panier
+====================================
+
+L'ajout et le retrait d'une recette au panier se fait par un bouton sur la recette.
+
+Ce bouton affiche "Ajouter" lorsque l'article n'est pas encore dans le panier,
+et "Supprimer" lorsqu'il est déjà dans le panier.
+
+Lorsque l'utilisateur clique sur le bouton, une requête AJAX est envoyée pour ajouter l'article au panier. Le bouton change également d'état pour passer
+de "Ajouter" à "Suppirmer" ou inversement.
+
+L'utilisation d'AJAX pour l'ajout au panier, et de JavaScript en général pour
+changer l'apparence du bouton permet la manipulation du panier sans avoir besoin de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).
+
 Gestion de panier qui déconne sous Safari
 ==========================================
 
-POURQUOI ?!
+La gestion du panier a des problèmes lorsqu'on utilise le navigateur Safari mais nous n'avons pas réussi à en trouver la cause.
