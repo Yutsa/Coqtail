@@ -89,7 +89,7 @@ Ce bouton affiche "Ajouter" lorsque l'article n'est pas encore dans le panier,
 et "Supprimer" lorsqu'il est déjà dans le panier.
 
 Lorsque l'utilisateur clique sur le bouton, une requête AJAX est envoyée pour ajouter l'article au panier. Le bouton change également d'état pour passer
-de "Ajouter" à "Suppirmer" ou inversement.
+de "Ajouter" à "Supprimer" ou inversement.
 
 L'utilisation d'AJAX pour l'ajout au panier, et de JavaScript en général pour
 changer l'apparence du bouton permet la manipulation du panier sans avoir besoin de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).

@@ -110,7 +110,7 @@
     8 =>
     array (
         'titre' => 'Champagne en cocktail',
-        'ingredients' => '1 morceau de sucre roux|3 traits d\'angostura|1 cl de cognac|c 8 cl de champagne',
+        'ingredients' => '1 morceau de sucre roux|3 traits d\'angostura|1 cl de cognac|8 cl de champagne',
         'preparation' => 'Placer les ingrédients directement dans un verre de type flûte à champagne dans l\'ordre suivant : Imbiber le morceau de sucre d\'angostura, puis le mettre au fond d\'une flûte à champagne. Verser doucement le cognac (il doit recouvrir le morceau de sucre). Compléter avec du champagne bien frais.',
         'index' =>
         array (
@@ -226,7 +226,7 @@
     17 =>
     array (
         'titre' => 'Cocktail Grand Paradis',
-        'ingredients' => '1 cl de cognac|c 5 cl de jus d\'abricot|10 cl environ de champagne',
+        'ingredients' => '1 cl de cognac|5 cl de jus d\'abricot|10 cl environ de champagne',
         'preparation' => 'Mélanger au shaker le cognac et le jus d\'abricot. Verser dans un verre (type verre tulipe) et remplir de champagne.',
         'index' =>
         array (
@@ -264,7 +264,7 @@
     20 =>
     array (
         'titre' => 'Cocktail MTS',
-        'ingredients' => '50 cl de martini|25 cl de triple sec|c 25 cl de sucre de canne|50 cl de jus de fruits multivitaminés',
+        'ingredients' => '50 cl de martini|25 cl de triple sec|25 cl de sucre de canne|50 cl de jus de fruits multivitaminés',
         'preparation' => 'Dans un grand pichet, verser tous les ingrédients et les mélanger. Laisser reposer une heure au réfrigérateur. A déguster très frais.',
         'index' =>
         array (
