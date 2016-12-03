@@ -158,6 +158,10 @@ function displayBasket(){
 
         $i++;
     }
+    if ($i == 0)
+    {
+        echo ('<p class="center">Votre panier est vide.</p>');
+    }
 }
 
 /*

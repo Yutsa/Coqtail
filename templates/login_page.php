@@ -46,6 +46,9 @@ include_once("../core/basket.inc.php");
                     </div>
                 </form>
             </div>
+            <div class ="center">
+                <p>Vous n'êtes pas encore inscrit ? <a href="register_form.php">Cliquez ici</a> pour vous inscrire.</p>
+            </div>
         </div>
 
         <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>

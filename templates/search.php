@@ -37,7 +37,7 @@ include_once(realpath(dirname(__FILE__) .
 
         <div class="row center container">
             <div class="input-field col s12">
-                <h2 class="col s12 center">Ajouter un ingrédient à la recherche</h2>
+                <h2 class="col s12 center">Recherchez un ingrédient : </h2>
                 <div class="ui-widget">
                     <input id="tags">
                 </div>
@@ -47,9 +47,7 @@ include_once(realpath(dirname(__FILE__) .
 
                 </ul>
             </div>
-            <div class="col s12 card-panel blue lighten-5">
-                <p>Cliquez sur un élément pour l'exclure de la recherche. Cliquez sur la croix pour le supprimer.</p>
-            </div>
+            
             <div class="col s12" id="displaySearch">
 
             </div>

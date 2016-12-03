@@ -59,14 +59,27 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     $hasError = false;
     $indexEntry; // The variable that will store the index entry of the user.
 
-    // This function provides a random salt.
-    $hashedPassword = password_hash($_POST["password"], PASSWORD_BCRYPT);
+    if(empty($_POST["email"]))
+    {
+        $mailRequired = "L'adresse mail est obligatoire";
+        $hasError = true;
+    }
+    else if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/", $_POST["email"]))
+    {
+        $validMail = "L'adresse mail n'est pas valide";
+        $hasError = true;
+    }
 
-    $user = array(
-        "email" => $_POST["email"],
-        "password" => $hashedPassword,
-        "basket" => array()
-    );
+    if(empty($_POST["password"]))
+    {
+        $passwordRequired = "Le mot de passe est obligatoire.";
+        $hasError = true;
+    }
+    else if(strlen($_POST["password"]) < 4)
+    {
+        $passwordTooShort = "Le mot de passe est trop cours";
+        $hasError = true;
+    }
 
     if (!empty($_POST['nom']) &&
         preg_match("/[0-9]+/", $_POST["nom"]))
@@ -84,13 +97,25 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
 
     if (!$hasError)
     {
+        // This function provides a random salt.
+        $hashedPassword = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        $user = array(
+            "email" => $_POST["email"],
+            "password" => $hashedPassword,
+            "basket" => array()
+        );
+        
         try
         {
             $accountIndexPath = "../data/account_index";
             addEntryToAccountIndex($user["email"],
-                $accountIndexPath);
+                                   $accountIndexPath);
             $DataFilePath = "../data/" . $user["email"];
             storeUserData($DataFilePath, $user);
+
+            //Connect user if register succes
+            include_once("../core/connect_user.php");
+            //Redirect user on a succes page
             header("Location: registration_success.php");
         }
         catch (Exception $e)
@@ -98,5 +123,9 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
             $errorMessage = "Adresse mail déjà utilisée.";
         }
     }
+}
+else
+{
+
 }
 ?>

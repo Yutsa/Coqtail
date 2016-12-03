@@ -1,21 +1,27 @@
 <?php
 include_once("../core/basket.inc.php");
-    // If the user is connected, this page should redirect to the home page.
+// If the user is connected, this page should redirect to the home page.
 
-    // Initializes the error message if they're not set.
-    if (!isset($nomError)) $nomError = '';
-    if (!isset($errorMessage)) $errorMessage = '';
-    if (!isset($prenomError)) $prenomError = '';
+// Initializes the error message if they're not set.
+if (!isset($nomError)) $nomError = '';
+if (!isset($errorMessage)) $errorMessage = '';
+if (!isset($prenomError)) $prenomError = '';
+if (!isset($mailRequired)) $mailRequired = '';
+if (!isset($passwordRequired)) $passwordRequired = '';
+if (!isset($validMail)) $validMail = '';
+if (!isset($passwordTooShort)) $passwordTooShort = '';
 
-    if (isset($_SESSION["username"]))
-        header('Location: ../index.php');
-    if (isset($_POST["email"]))
-        include_once("../core/register_user.php");
 
-    // Initializes field values
-    isset($_POST['nom']) ? $nom = $_POST['nom'] : $nom = '';
-    isset($_POST['email']) ? $email = $_POST['email'] : $email = '';
-    isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
+
+if (isset($_SESSION["username"]))
+    header('Location: ../index.php');
+if (isset($_POST["email"]))
+    include_once("../core/register_user.php");
+
+// Initializes field values
+isset($_POST['nom']) ? $nom = $_POST['nom'] : $nom = '';
+isset($_POST['email']) ? $email = $_POST['email'] : $email = '';
+isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +30,12 @@ include_once("../core/basket.inc.php");
         <meta charset="utf-8">
         <title>Coq'Tail - S'enregistrer</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <?php include_once 'favicon.inc.php'; ?>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <?php include_once 'favicon.inc.php'; ?>
     </head>
     <body>
         <?php include_once 'menu.inc.php' ?>
@@ -42,13 +48,17 @@ include_once("../core/basket.inc.php");
                 <form class="col s12" action="#" method="post">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="email" name="email" type="email" class="validate" value="<?php echo $email ?>" required>
-                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" class="validate" value="<?php echo $email ?>" required="" aria-required="true">
+                            <label for="email">Email *</label>
+                            <?=  $mailRequired; ?>
+                            <?=  $validMail; ?>
                             <?=  $errorMessage; ?>
                         </div>
                         <div class="input-field col s6">
-                            <input id="password" name="password" type="password" class="validate" required>
-                            <label for="password">Mot de passe</label>
+                            <input id="password" name="password" type="password" class="validate" required="" aria-required="true">
+                            <label for="password">Mot de passe *</label>
+                            <?=  $passwordRequired; ?>
+                            <?=  $passwordTooShort; ?>
                         </div>
                     </div>
                     <div class="row">
@@ -101,6 +111,7 @@ include_once("../core/basket.inc.php");
                         </button>
                     </div>
                 </form>
+                <p>Seuls les champs marqués d'un * sont obligatoires.</p>
             </div>
         </div>
 

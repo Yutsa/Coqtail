@@ -37,6 +37,10 @@ function isWithIngredient(&$Hierarchie, $searchIngredient, $recette)
 $atLeastOneRecite = false;
 $suggestRecite = array();
 
+echo ('<div class="col s12 card-panel blue lighten-5">
+                <p>Cliquez sur un élément pour l\'exclure de la recherche. Cliquez sur la croix pour le supprimer.</p>
+            </div>');
+
 //Iterates through each recites
 foreach($Recettes as $recette)
 {

@@ -141,7 +141,6 @@ $('document').ready(function() {
 
     //Event, when click on chip ingredient search
     //Inverse class (add to remove or remove to add)
-    //Use onFirst because it had to be execute before the search
     $('#list').on('click', 'div.chip', function() {
         if($(this).hasClass('add')) {
             $(this).removeClass('add');
