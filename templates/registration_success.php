@@ -1,6 +1,5 @@
 <?php
 include_once("../core/basket.inc.php");
-createCookieBasket();
 ?>
 <!DOCTYPE html>
 <html>

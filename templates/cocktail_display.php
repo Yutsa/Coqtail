@@ -5,7 +5,6 @@ include_once(realpath(dirname(__FILE__) .
 include_once(realpath(dirname(__FILE__) .
                       "/../core/donnees.inc.php"));
 include_once("../core/basket.inc.php");
-createCookieBasket();
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +45,6 @@ createCookieBasket();
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>
         <script type="text/javascript" src="../bower_components/materialize-autocomplete/jquery.materialize-autocomplete.min.js"></script>
-        
+
     </body>
 </html>

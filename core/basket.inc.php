@@ -3,8 +3,14 @@ include_once("functions.inc.php");
 include_once("donnees.inc.php");
 define("indexFilePath", "../data/accounts_index");
 session_start();
+
+if (!isset($_SESSION["notConnectedBasket"]))
+{
+    $_SESSION["notConnectedBasket"] = array();
+}
+
 /**
-  * return the basket of the current user
+  * Returns the basket of the current user
   * @return basket of the user
   **/
 function getUserBasket()
@@ -18,14 +24,14 @@ function getUserBasket()
         fclose($userDataFile);
         return $userData["basket"];
     }
-    else 
+    else
     {
-        return unserialize($_COOKIE["userBasket"]);
+        return $_SESSION["notConnectedBasket"];
     }
 }
 
 /**
-  * Merges the cookie basket with the connected basket
+  * Merges the not connected basket with the connected basket
   **/
 function basketFusion(){
     $userDataFileName = $_SESSION["userDataFileName"];
@@ -34,8 +40,9 @@ function basketFusion(){
     $userData = unserialize(fgets($userDataFile));
     fclose($userDataFile);
     $userBasketConnected = $userData["basket"];
-    $userBasketCookie = unserialize($_COOKIE["userBasket"]);
-    foreach ($userBasketCookie as $recipe) {
+
+    $userBasketNotConnected = $_SESSION["notConnectedBasket"];
+    foreach ($userBasketNotConnected as $recipe) {
         if(!in_array($recipe,$userBasketConnected)){
             $userData["basket"][]=$recipe;
         }
@@ -43,23 +50,12 @@ function basketFusion(){
     $userDataFile = fopen($userDataFilePath, "w+");
     fwrite($userDataFile, serialize($userData));
     fclose($userDataFile);
-    unset($_COOKIE["userBasket"]);
-    setcookie("userBasket",null,-1, "/Projet");
+    unset($_SESSION["notConnectedBasket"]);
 }
 
 /**
-  * Create the cookie that contains the basket of the user not logged
-  **/
-function createCookieBasket()
-{
-    if(!isset($_COOKIE["userBasket"])){
-        $userBasket = array();
-        setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
-    }
-}
-
-/**
-  * Add to the user's basket a new recipe
+  * Adds the recipe to the user's basket.
+  * @param $recipe The recipe to add to the basket.
   **/
 function addRecipeBasket($recipe)
 {
@@ -77,52 +73,43 @@ function addRecipeBasket($recipe)
     }
     else
     {
-        $userBasket = unserialize($_COOKIE["userBasket"]);
-        $userBasket[] = $recipe;
-        setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
+        $_SESSION["notConnectedBasket"][] = $recipe;
     }
 }
 
+
+//TODO: Search usage of this function since the return type changed.
 /**
-  * Search a recipe in the user basket
-  * @return the index of recipe in the basket or -1 if is don't exist
-  * @param $recipe the recipe to search
+  * Searches a recipe in the user's basket
+  * @param $recipe The recipe to search
+  * @return The index of recipe in the basket or FALSE if it doesn't exist
   **/
 function searchRecipeInBasket($recipe){
-    $index = 0;
-    if(isConnected()){
+    if(isConnected())
+    {
         $userDataFileName = $_SESSION["userDataFileName"];
         $userDataFilePath = "../data/" . $userDataFileName;
         $userDataFile = fopen($userDataFilePath, "r");
         $userData = unserialize(fgets($userDataFile));
-        foreach($userData["basket"] as $userRecipe){
-            if($userRecipe == $recipe){
-                return $index;
-            }
-            $index++;
-        }
         fclose($userDataFile);
+        return array_search($recipe, $userData["basket"]);
+
     }
-    else{
-        $userBasket = unserialize($_COOKIE["userBasket"]);
-        foreach($userBasket as $userRecipe){
-            if($userRecipe == $recipe){
-                return $index;
-            }
-            $index++;
-        }
+    else
+    {
+        return array_search($recipe, $_SESSION["notConnectedBasket"]);
     }
-    return -1;
 }
 
 /**
-  * Remove a recipe in the user's basket
-  * @param $recipe the recipe to remove
+  * Removes a recipe in the user's basket
+  * @param $recipe The recipe to remove
   **/
 function removeRecipeFromBasket($recipe){
 
     if(($index = searchRecipeInBasket($recipe))!=-1){
-        if(isConnected()){
+        if(isConnected())
+        {
             $userDataFileName = $_SESSION["userDataFileName"];
             $userDataFilePath = "../data/" . $userDataFileName;
             $userDataFile = fopen($userDataFilePath, "r");
@@ -133,10 +120,11 @@ function removeRecipeFromBasket($recipe){
             fwrite($userDataFile, serialize($userData));
             fclose($userDataFile);
         }
-        else{
-            $userBasket = unserialize($_COOKIE["userBasket"]);
-            unset($userBasket[array_search($recipe, $userBasket)]);
-            setcookie("userBasket",serialize($userBasket), time()+60*60*25*30, "/Projet");
+        else
+        {
+            $index = array_search($recipe,
+                $_SESSION["notConnectedBasket"]);
+            unset($_SESSION["notConnectedBasket"][$index]);
         }
     }
 }

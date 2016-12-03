@@ -114,18 +114,18 @@ function displayCocktail($recette)
 {
     $cocktail_name = $recette["titre"];
     $cocktail_description = $recette["preparation"];
-    
+
     $ingredients = explode('|', $recette['ingredients']);
-    
+
     $cocktail_ingredients = '<ul class="collection">';
-    
+
     foreach($ingredients as $ingredient)
     {
         $cocktail_ingredients = $cocktail_ingredients . '<li class="collection-item blue lighten-5">' . $ingredient . '</li>';
     }
-    
+
     $cocktail_ingredients =  $cocktail_ingredients . '</ul>';
-    
+
     //Get the image's path
     $cocktail_image = "../static/img/" . ucfirst(str_replace(' ', '_', $cocktail_name)) . ".jpg";
 
@@ -164,7 +164,7 @@ function displayCocktail($recette)
         </div>
         <div class='card-action center'>
             <?php
-        if (searchRecipeInBasket($recette) == -1)
+        if (searchRecipeInBasket($recette) === false)
         {
             ?>
             <button class="addToBasket waves-effect waves-light btn-flat indigo darken-3"><span class="white-text">Ajouter <i class="material-icons center">shopping_cart</i></span></button>

@@ -66,19 +66,24 @@ et s'assurer de la validité de nos fonctions. Cela permet également de
 vérifier que tout fonctionne toujours après un changement
 d'implémentation d'un composant du site par exemple.
 
-Taille cookies
-===============
+Taille cookies et panier non connecté
+======================================
 
-On ne peut mettre que 5 à 6 recettes dans son panier sans être connecter à
-cause de la taille maximum des cookies.
+Au départ nous utilisions un cookie pour stocker la panier d'un
+utilisateur non connecté. Cependant les cookies ont une taille limite.
+Comme nous avons fait le choix de stocker les recettes en stockant
+directement le tableau représentant la recette, cela prend de la place.
 
-Cela est dû au fait que l'on stock l'array représentant une recette que l'on
-sérialise. Cela prend donc beaucoup de place.
+Ce problème de taille limitait à 6 recettes dans le cookie. Pour ne
+plus avoir ce problème deux solutions étaient possibles. Stocker
+seulement le nom de la recette ou bien utiliser une variable de session.
 
-Cependant le fait d'être limité en étant non connecté pousse l'utilisateur à
-s'inscrire ce qui peut être positif.
+Nous avons décidé de stocker le tableau représentant une recette car
+cela nous permet de gagner du temps lors des recherches de présence de
+recette par exemple.
 
-C'est pourquoi nous avons décidé de laisser cela comme ça. Nous aurions également pu utiliser des variables de sessions pour éviter cela.
+C'est pourquoi nous avons opté pour l'utilisation d'une variable de
+session pour le panier d'un utilisateur non connecté.
 
 Ajout/Retrait de recettes du panier
 ====================================
