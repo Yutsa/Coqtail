@@ -7,6 +7,12 @@ $(document).ready(function(){
 
     $(".button-collapse").sideNav();
 
+    $('.datepicker').pickadate({
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 200 // Creates a dropdown of 15 years to control year
+    });
+
     $('body').on('click', 'button.addToBasket', function() {
         sendAjaxModifyBasket("add", this);
         changeButton(this);

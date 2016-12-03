@@ -30,14 +30,58 @@ include_once("../core/basket.inc.php");
             </div>
             <div class="row">
                 <form class="col s12" action="#" method="post">
-                    <div class="input-field col s6">
-                        <input id="email" name="email" type="email" class="validate" required>
-                        <label for="email">Email</label>
-                        <?= $errorMessage ?>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="email" name="email" type="email" class="validate" required>
+                            <label for="email">Email</label>
+                            <?= $errorMessage ?>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="password" name="password" type="password" class="validate" required>
+                            <label for="password">Mot de passe</label>
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <input id="password" name="password" type="password" class="validate" required>
-                        <label for="password">Mot de passe</label>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="nom" name="nom" type="text" class="validate">
+                            <label for="nom">Nom</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="prenom" name="prenom" type="text" class="validate">
+                            <label for="prenom">Prénom</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <p>
+                                <input name="sexe" type="radio" id="homme" />
+                                <label for="homme">Homme</label>
+                                <input name="sexe" type="radio" id="femme" />
+                                <label for="femme">Femme</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="naissance" type="date" class="datepicker">
+                            <label for="naissance">Date de naissance</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="phone" id="phone"/>
+                            <label for="phone">Numéro de téléphone</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input type="text" name="address" id="address"/>
+                            <label for="address">Adresse</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="text" name="postal" id="postal"/>
+                            <label for="postal">Code postal</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="text" name="ville" id="ville"/>
+                            <label for="ville">Ville</label>
+                        </div>
                     </div>
                     <div class="row">
                         <button class="btn waves-effect waves-light col s4 offset-s4 " type="submit" name="action">
