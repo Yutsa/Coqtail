@@ -56,28 +56,47 @@ function storeUserData($userDataFilePath, $userData)
 
 if (isset($_POST["email"]) && isset($_POST["password"]))
 {
+    $hasError = false;
     $indexEntry; // The variable that will store the index entry of the user.
 
     // This function provides a random salt.
     $hashedPassword = password_hash($_POST["password"], PASSWORD_BCRYPT);
+
     $user = array(
         "email" => $_POST["email"],
         "password" => $hashedPassword,
         "basket" => array()
     );
 
-    try
+    if (!empty($_POST['nom']) &&
+        preg_match("/[0-9]+/", $_POST["nom"]))
     {
-        $accountIndexPath = "../data/account_index";
-        addEntryToAccountIndex($user["email"],
-            $accountIndexPath);
-        $DataFilePath = "../data/" . $user["email"];
-        storeUserData($DataFilePath, $user);
-        header("Location: registration_success.php");
+        $nomError = "Nom incorrect.";
+        $hasError = true;
     }
-    catch (Exception $e)
+
+    if (!empty($_POST['prenom']) &&
+        preg_match("/[0-9]+/", $_POST["prenom"]))
     {
-        $errorMessage = "Adresse mail déjà utilisée.";
+        $prenomError = "Prénom incorrect.";
+        $hasError = true;
+    }
+
+    if (!$hasError)
+    {
+        try
+        {
+            $accountIndexPath = "../data/account_index";
+            addEntryToAccountIndex($user["email"],
+                $accountIndexPath);
+            $DataFilePath = "../data/" . $user["email"];
+            storeUserData($DataFilePath, $user);
+            header("Location: registration_success.php");
+        }
+        catch (Exception $e)
+        {
+            $errorMessage = "Adresse mail déjà utilisée.";
+        }
     }
 }
 ?>

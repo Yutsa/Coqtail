@@ -1,11 +1,21 @@
 <?php
 include_once("../core/basket.inc.php");
     // If the user is connected, this page should redirect to the home page.
-    $errorMessage = "";
+
+    // Initializes the error message if they're not set.
+    if (!isset($nomError)) $nomError = '';
+    if (!isset($errorMessage)) $errorMessage = '';
+    if (!isset($prenomError)) $prenomError = '';
+
     if (isset($_SESSION["username"]))
         header('Location: ../index.php');
     if (isset($_POST["email"]))
         include_once("../core/register_user.php");
+
+    // Initializes field values
+    isset($_POST['nom']) ? $nom = $_POST['nom'] : $nom = '';
+    isset($_POST['email']) ? $email = $_POST['email'] : $email = '';
+    isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +42,9 @@ include_once("../core/basket.inc.php");
                 <form class="col s12" action="#" method="post">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="email" name="email" type="email" class="validate" required>
+                            <input id="email" name="email" type="email" class="validate" value="<?php echo $email ?>" required>
                             <label for="email">Email</label>
-                            <?= $errorMessage ?>
+                            <?=  $errorMessage; ?>
                         </div>
                         <div class="input-field col s6">
                             <input id="password" name="password" type="password" class="validate" required>
@@ -43,18 +53,20 @@ include_once("../core/basket.inc.php");
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input id="nom" name="nom" type="text" class="validate">
+                            <input id="nom" name="nom" type="text" class="validate" value="<?php echo $nom ?>">
                             <label for="nom">Nom</label>
+                            <span style="color:red"><?= $nomError ?> </span>
                         </div>
                         <div class="input-field col s4">
-                            <input id="prenom" name="prenom" type="text" class="validate">
+                            <input id="prenom" name="prenom" type="text" class="validate" value="<?php echo $prenom ?>">
                             <label for="prenom">Prénom</label>
+                            <span style="color:red"><?= $prenomError ?> </span>
                         </div>
                         <div class="input-field col s4">
                             <p>
-                                <input name="sexe" type="radio" id="homme" />
+                                <input name="sexe" type="radio" id="homme" value="homme"/>
                                 <label for="homme">Homme</label>
-                                <input name="sexe" type="radio" id="femme" />
+                                <input name="sexe" type="radio" id="femme" value="femme"/>
                                 <label for="femme">Femme</label>
                             </p>
                         </div>
