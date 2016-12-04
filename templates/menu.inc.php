@@ -32,6 +32,7 @@ define('ROOT_URI', "/Projet");
            else
            { ?>
             <li><a href="<?php echo ROOT_URI . "/core/logout.php" ?>">Se déconnecter</a></li>
+            <li><a href="<?php echo ROOT_URI . "/templates/profil.php" ?>">Profil</a></li>
             <?php } ?>
         </ul>
 

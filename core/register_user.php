@@ -94,6 +94,27 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
         $prenomError = "Prénom incorrect.";
         $hasError = true;
     }
+    
+    if (!empty($_POST['phone']) &&
+        !preg_match("/^0[0-9]{9}$/", $_POST["phone"]))
+    {
+        $phoneError = "Numéro de téléphone incorrect.";
+        $hasError = true;
+    }
+    
+    if (!empty($_POST['postal']) &&
+        !preg_match("/[0-9]{5}/", $_POST["postal"]))
+    {
+        $postalError = "Code postal incorrect.";
+        $hasError = true;
+    }
+    
+    if (!empty($_POST['ville']) &&
+        !preg_match("/[a-z A-Z]+$/", $_POST["ville"]))
+    {
+        $villeError = "Ville incorrecte.";
+        $hasError = true;
+    }
 
     if (!$hasError)
     {
@@ -102,6 +123,13 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
         $user = array(
             "email" => $_POST["email"],
             "password" => $hashedPassword,
+            "prenom" => $_POST["prenom"],
+            "nom" => $_POST["nom"],
+            "phone" => $_POST["phone"],
+            "naissance" => $_POST["naissance"],
+            "address" => $_POST["address"],
+            "postal" => $_POST["postal"],
+            "ville" => $_POST["ville"],
             "basket" => array()
         );
         

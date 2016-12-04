@@ -4,6 +4,10 @@ include_once("../core/basket.inc.php");
 
 // Initializes the error message if they're not set.
 if (!isset($nomError)) $nomError = '';
+if (!isset($phoneError)) $phoneError = '';
+if (!isset($postalError)) $postalError = '';
+if (!isset($villeError)) $villeError = '';
+if (!isset($Error)) $nomError = '';
 if (!isset($errorMessage)) $errorMessage = '';
 if (!isset($prenomError)) $prenomError = '';
 if (!isset($mailRequired)) $mailRequired = '';
@@ -22,6 +26,10 @@ if (isset($_POST["email"]))
 isset($_POST['nom']) ? $nom = $_POST['nom'] : $nom = '';
 isset($_POST['email']) ? $email = $_POST['email'] : $email = '';
 isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
+isset($_POST['ville']) ? $ville = $_POST['ville'] : $ville = '';
+isset($_POST['postal']) ? $postal = $_POST['postal'] : $postal = '';
+isset($_POST['address']) ? $address = $_POST['address'] : $address = '';
+isset($_POST['phone']) ? $phone = $_POST['phone'] : $phone = '';
 ?>
 
 <!DOCTYPE html>
@@ -50,15 +58,15 @@ isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
                         <div class="input-field col s6">
                             <input id="email" name="email" type="email" class="validate" value="<?php echo $email ?>" required="" aria-required="true">
                             <label for="email">Email *</label>
-                            <?=  $mailRequired; ?>
-                            <?=  $validMail; ?>
-                            <?=  $errorMessage; ?>
+                            <span style="color:red"><?=  $mailRequired; ?></span>
+                            <span style="color:red"><?=  $validMail; ?></span>
+                            <span style="color:red"><?=  $errorMessage; ?></span>
                         </div>
                         <div class="input-field col s6">
                             <input id="password" name="password" type="password" class="validate" required="" aria-required="true">
                             <label for="password">Mot de passe *</label>
-                            <?=  $passwordRequired; ?>
-                            <?=  $passwordTooShort; ?>
+                            <span style="color:red"><?=  $passwordRequired; ?></span>
+                            <span style="color:red"><?=  $passwordTooShort; ?></span>
                         </div>
                     </div>
                     <div class="row">
@@ -83,26 +91,29 @@ isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="naissance" type="date" class="datepicker">
+                            <input name="naissance" id="naissance" type="date" class="datepicker">
                             <label for="naissance">Date de naissance</label>
                         </div>
                         <div class="input-field col s6">
-                            <input type="text" name="phone" id="phone"/>
+                            <input type="text" name="phone" id="phone" class="validate" value="<?php echo $phone ?>"/>
                             <label for="phone">Numéro de téléphone</label>
+                            <span style="color:red"><?= $phoneError ?> </span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input type="text" name="address" id="address"/>
+                            <input type="text" name="address" id="address" class="validate" value="<?php echo $address ?>"/>
                             <label for="address">Adresse</label>
                         </div>
                         <div class="input-field col s4">
-                            <input type="text" name="postal" id="postal"/>
+                            <input type="text" name="postal" id="postal" class="validate" value="<?php echo $postal ?>"/>
                             <label for="postal">Code postal</label>
+                            <span style="color:red"><?= $postalError ?> </span>
                         </div>
                         <div class="input-field col s4">
-                            <input type="text" name="ville" id="ville"/>
+                            <input type="text" name="ville" id="ville" class="validate" value="<?php echo $ville ?>"/>
                             <label for="ville">Ville</label>
+                            <span style="color:red"><?= $villeError ?> </span>
                         </div>
                     </div>
                     <div class="row">
