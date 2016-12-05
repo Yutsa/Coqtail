@@ -19,6 +19,7 @@ if(isConnected())
     if (!isset($passwordError)) $passwordError = '';
     if (!isset($newPasswordError)) $newPasswordError = '';
     $change = '';
+    $hasError = false;
 
     //Initialize paths
     $userDataFileName = $_SESSION["userDataFileName"];

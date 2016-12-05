@@ -17,9 +17,11 @@ est déjà utilisée, il est alors redirigé sur la page du
 formulaire avec une indication expliquant que l'email est déjà
 utilisé.
 
-Cependant le champ email est remis à zéro. Cela est un choix
-car il ne servirait à rien de laisser l'adresse mail déjà
-utilisée dans le champ.
+Les deux seuls champs obligatoires sont l'email et le mot de passe.
+Tous les champs sont testés avec des regex pour s'assurer de leurs
+validité.
+Ils sont bien entendu tous remplis automatiquement à nouveau si la
+saisie est fausse.
 
 ### Mode de stockage
 
@@ -104,19 +106,13 @@ L'utilisation d'AJAX pour l'ajout au panier, et de JavaScript en général pour
 changer l'apparence du bouton permet la manipulation du panier sans avoir besoin
 de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).
 
-Gestion de panier qui bug sous Safari
-======================================
-
-La gestion du panier a des problèmes lorsqu'on utilise le navigateur Safari mais
-nous n'avons pas réussi à en trouver la cause.
-
 Parcours d'ingredients
 =======================
 
 La page se présente sous la forme d'un menu présentant toutes
 les sous-catégories de la catégorie principale (ici Aliment) d'un côté, et de
 l'autre l'affichage des recettes contenant l'ingredient
-(ou une de ses sous catégorie) correspondant(e).
+(ou une de ses sous catégorie) correspondant(es).
 
 C'est un menu déroulant qui est utilisé. Lorqu'un clic est détecté, le catégorie
 affiche alors toutes ses sous-catégories directes en dessous d'elle tout en
@@ -158,8 +154,8 @@ Une fois vos ingrédients séléctionnés vous pouvez cliquer sur ceux que vous 
 souhaitez pas pour les exclure de la recherche.
 
 L'initialisation de l'autocomplétion était une des phases les plus longues de
-cette étapes. Il faut d'abord récuperer un tableau avec tous les ingrédients,
-qu'il faut ensuite traduire de php à javaScript. Il faut ensuite gérer les
+cette étapes. Il faut d'abord récupérer un tableau avec tous les ingrédients,
+qu'il faut ensuite traduire de php à JavaScript. Il faut ensuite gérer les
 suggestions qui doivent apparaitres, et en extraire le contenues quand elle sont
 séléctionnées.
 
@@ -174,3 +170,12 @@ Profil de l'utilisateur
 Une page est dédié au profil de l'utilisateur. Cette page contient toutes les
 informations de l'utilisateur hors mot de passe et permet la modification de
 toutes ces infomations hors adresse mail.
+
+Fonctionnement du site
+=======================
+
+Le site est composée de plusieurs pages toutes accessibles par une barre de 
+navigation. Elle est dynamique, ce qui signifie que seules les pages utiles 
+sont affichées (pas de page connexion quand l'utilisateur l'est déjà). 
+Pour revenir à la page d'accueil, il suffit de cliquer sur "Coq'tail" en
+haut à gauche.
