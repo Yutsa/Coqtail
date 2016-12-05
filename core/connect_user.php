@@ -19,6 +19,7 @@
     **/
     function getUsersDataFile($email, $indexFilePath)
     {
+        //Todo throw exception if not valid mail
         $fileHandle = fopen($indexFilePath, "a+");
         while (($line = fgets($fileHandle)) != false)
         {

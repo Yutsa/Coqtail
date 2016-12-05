@@ -17,7 +17,7 @@ if(isConnected())
     //print_r($userData);
 
     $email = $userData["email"];
-    //$password = $userData["password"];
+    $password = $userData["password"];
 
     if(isset($_POST["prenom"])) 
     {
@@ -155,7 +155,8 @@ else
                     </div>
                     <div class="row">
                         <button class="btn waves-effect waves-light col s4 offset-s4 " type="submit" name="action">
-                            Changer pour ces informations<i class="material-icons right">send</i>
+                            Changer pour ces informations
+                            <i class="material-icons right">send</i>
                         </button>
                     </div>
                 </form>
@@ -167,15 +168,24 @@ else
                 <form class="col s12" action="#" method="post">
                     <div class="input-field col s6">
                         <input id="password" name="password" type="password" class="validate" required="" aria-required="true">
-                        <label for="password">Mot de passe *</label>
+                        <label for="password">Mot de passe</label>
                     </div>
                     <div class="input-field col s6">
                         <input id="newPassword" name="newPassword" type="password" class="validate" required="" aria-required="true">
-                        <label for="newPassword">Nouveau mot de passe *</label>
+                        <label for="newPassword">Nouveau mot de passe</label>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light col s4 offset-s4 " type="submit" name="action">
+                            Changer de mot de passe
+                            <i class="material-icons right">send</i>
+                        </button>
                     </div>
                 </form>
             </div>
 
         </div>
+
+        <script src="../static/js/custom.js" charset="utf-8"></script>
+
     </body>
 </html>
