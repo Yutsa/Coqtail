@@ -19,11 +19,11 @@ if(isConnected())
     $email = $userData["email"];
     $password = $userData["password"];
 
-    if(isset($_POST["prenom"]))
+    if(isset($_POST["firstname"]))
     {
         //Change with new value
-        $userData["prenom"] = $_POST["prenom"];
-        $userData["nom"] = $_POST["nom"];
+        $userData["firstname"] = $_POST["firstname"];
+        $userData["name"] = $_POST["name"];
         $userData["ville"] = $_POST["ville"];
         $userData["phone"] = $_POST["phone"];
         $userData["postal"] = $_POST["postal"];
@@ -43,21 +43,23 @@ if(isConnected())
     fclose($userDataFile);
 
 
-    $prenom = '';
-    $nom = '';
+    $firstname = '';
+    $name = '';
     $phone = '';
     $address = '';
     $postal = '';
     $ville = '';
     $naissance = '';
+    $homme = false;
+    $femme = false;
 
-    if (!empty($userData["prenom"]))
+    if (!empty($userData["firstname"]))
     {
-        $prenom = $userData["prenom"];
+        $firstname = $userData["firstname"];
     }
-    if (!empty($userData["nom"]))
+    if (!empty($userData["name"]))
     {
-        $nom = $userData["nom"];
+        $name = $userData["name"];
     }
     if (!empty($userData["phone"]))
     {
@@ -85,9 +87,9 @@ if(isConnected())
         {
             $homme = true;
         }
-        else
+        else if ($userData["sexe"] == "femme")
         {
-            $homme = false;
+            $femme = true;
         }
     }
 }
@@ -126,35 +128,35 @@ else
                 <form class="col s12" action="#" method="post">
                     <div class="row">
                         <div class="input-field col s4">
-                            <p for="nom">Nom : </p>
-                            <input id="nom" name="nom" type="text" class="validate" value="<?php echo $nom ?>">
+                            <p for="name">Nom : </p>
+                            <input id="name" name="name" type="text" class="validate" value="<?php echo $name ?>">
                         </div>
                         <div class="input-field col s4">
-                            <p for="nom">Prénom : </p>
-                            <input id="prenom" name="prenom" type="text" class="validate" value="<?php echo $prenom ?>" />
+                            <p for="firstname">Prénom : </p>
+                            <input id="firstname" name="firstname" type="text" class="validate" value="<?php echo $firstname ?>" />
                         </div>
                         <div class="input-field col s4">
                             <p>
-                                <input name="sexe" type="radio" id="homme" value="homme" checked="<?php echo $homme ? "true" : "false";  ?>"/>
+                                <input name="sexe" type="radio" id="homme" value="homme" <?php echo $homme ? "checked" : "";  ?>/>
                                 <label for="homme">Homme</label>
-                                <input name="sexe" type="radio" id="femme" value="femme" checked="<?php echo !$homme ? "true" : "false"; ?>"/>
+                                <input name="sexe" type="radio" id="femme" value="femme" <?php echo $femme ? "checked" : "";  ?>/>
                                 <label for="femme">Femme</label>
                             </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <p for="nom">Date de naissance : </p>
+                            <p>Date de naissance : </p>
                             <input id="naissance" type="date" class="datepicker" name="naissance" value="<?php echo $naissance ?>" />
                         </div>
                         <div class="input-field col s6">
-                            <p for="nom">Téléphone : </p>
+                            <p>Téléphone : </p>
                             <input type="text" name="phone" id="phone" value="<?php echo $phone ?>"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <p for="nom">Adresse : </p>
+                            <p>Adresse : </p>
                             <input type="text" name="address" id="address" value="<?php echo $address ?>"/>
                         </div>
                         <div class="input-field col s4">

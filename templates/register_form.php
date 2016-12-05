@@ -3,19 +3,17 @@ include_once("../core/basket.inc.php");
 // If the user is connected, this page should redirect to the home page.
 
 // Initializes the error message if they're not set.
-if (!isset($nomError)) $nomError = '';
+if (!isset($mailError)) $mailError = '';
+if (!isset($passwordError)) $passwordError = '';
+
+if (!isset($nameError)) $nameError = '';
+if (!isset($firstNameError)) $firstNameError = '';
+
 if (!isset($phoneError)) $phoneError = '';
 if (!isset($postalError)) $postalError = '';
 if (!isset($villeError)) $villeError = '';
-if (!isset($Error)) $nomError = '';
+
 if (!isset($errorMessage)) $errorMessage = '';
-if (!isset($prenomError)) $prenomError = '';
-if (!isset($mailRequired)) $mailRequired = '';
-if (!isset($passwordRequired)) $passwordRequired = '';
-if (!isset($validMail)) $validMail = '';
-if (!isset($passwordTooShort)) $passwordTooShort = '';
-
-
 
 if (isset($_SESSION["username"]))
     header('Location: ../index.php');
@@ -23,9 +21,9 @@ if (isset($_POST["email"]))
     include_once("../core/register_user.php");
 
 // Initializes field values
-isset($_POST['nom']) ? $nom = $_POST['nom'] : $nom = '';
+isset($_POST['name']) ? $name = $_POST['name'] : $name = '';
 isset($_POST['email']) ? $email = $_POST['email'] : $email = '';
-isset($_POST['prenom']) ? $prenom = $_POST['prenom'] : $prenom = '';
+isset($_POST['firstname']) ? $firstName = $_POST['firstname'] : $firstName = '';
 isset($_POST['ville']) ? $ville = $_POST['ville'] : $ville = '';
 isset($_POST['postal']) ? $postal = $_POST['postal'] : $postal = '';
 isset($_POST['address']) ? $address = $_POST['address'] : $address = '';
@@ -58,27 +56,25 @@ isset($_POST['phone']) ? $phone = $_POST['phone'] : $phone = '';
                         <div class="input-field col s6">
                             <input id="email" name="email" type="email" class="validate" value="<?php echo $email ?>" required="" aria-required="true">
                             <label for="email">Email *</label>
-                            <span style="color:red"><?=  $mailRequired; ?></span>
-                            <span style="color:red"><?=  $validMail; ?></span>
+                            <span style="color:red"><?=  $mailError; ?></span>
                             <span style="color:red"><?=  $errorMessage; ?></span>
                         </div>
                         <div class="input-field col s6">
                             <input id="password" name="password" type="password" class="validate" required="" aria-required="true">
                             <label for="password">Mot de passe *</label>
-                            <span style="color:red"><?=  $passwordRequired; ?></span>
-                            <span style="color:red"><?=  $passwordTooShort; ?></span>
+                            <span style="color:red"><?=  $passwordError; ?></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input id="nom" name="nom" type="text" class="validate" value="<?php echo $nom ?>">
-                            <label for="nom">Nom</label>
-                            <span style="color:red"><?= $nomError ?> </span>
+                            <input id="name" name="name" type="text" class="validate" value="<?php echo $name ?>">
+                            <label for="name">Nom</label>
+                            <span style="color:red"><?= $nameError ?> </span>
                         </div>
                         <div class="input-field col s4">
-                            <input id="prenom" name="prenom" type="text" class="validate" value="<?php echo $prenom ?>">
-                            <label for="prenom">Prénom</label>
-                            <span style="color:red"><?= $prenomError ?> </span>
+                            <input id="firstname" name="firstname" type="text" class="validate" value="<?php echo $firstName ?>">
+                            <label for="firstname">Prénom</label>
+                            <span style="color:red"><?= $firstNameError ?> </span>
                         </div>
                         <div class="input-field col s4">
                             <p>

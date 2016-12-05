@@ -1,5 +1,5 @@
 <?php
-// session_start();
+include_once("functions_user.php");
 /*
     This page is the landing point when a user registers. Verification of the
     inputs will be done client side on the form page.
@@ -59,62 +59,27 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     $hasError = false;
     $indexEntry; // The variable that will store the index entry of the user.
 
-    if(empty($_POST["email"]))
-    {
-        $mailRequired = "L'adresse mail est obligatoire";
+    if (testMail($_POST["email"], $mailError))
         $hasError = true;
-    }
-    else if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/", $_POST["email"]))
-    {
-        $validMail = "L'adresse mail n'est pas valide";
-        $hasError = true;
-    }
 
-    if(empty($_POST["password"]))
-    {
-        $passwordRequired = "Le mot de passe est obligatoire.";
+    if (testPassword($_POST["password"], $passwordError))
         $hasError = true;
-    }
-    else if(strlen($_POST["password"]) < 4)
-    {
-        $passwordTooShort = "Le mot de passe est trop cours";
-        $hasError = true;
-    }
 
-    if (!empty($_POST['nom']) &&
-        preg_match("/[0-9]+/", $_POST["nom"]))
-    {
-        $nomError = "Nom incorrect.";
+    if (testName($_POST["name"], $nameError))
         $hasError = true;
-    }
 
-    if (!empty($_POST['prenom']) &&
-        preg_match("/[0-9]+/", $_POST["prenom"]))
-    {
-        $prenomError = "Prénom incorrect.";
+    if (testFirstName($_POST["firstname"], $firstNameError))
         $hasError = true;
-    }
 
-    if (!empty($_POST['phone']) &&
-        !preg_match("/^0[0-9]{9}$/", $_POST["phone"]))
-    {
-        $phoneError = "Numéro de téléphone incorrect.";
-        $hasError = true;
-    }
 
-    if (!empty($_POST['postal']) &&
-        !preg_match("/[0-9]{5}/", $_POST["postal"]))
-    {
-        $postalError = "Code postal incorrect.";
+    if (testVille($_POST["ville"], $villeError))
         $hasError = true;
-    }
 
-    if (!empty($_POST['ville']) &&
-        !preg_match("/[a-z A-Z]+$/", $_POST["ville"]))
-    {
-        $villeError = "Ville incorrecte.";
+    if (testPostal($_POST["postal"], $postalError))
         $hasError = true;
-    }
+
+    if (testPhone($_POST["phone"], $phoneError))
+        $hasError = true;
 
     if (!$hasError)
     {
@@ -123,14 +88,13 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
         $user = array(
             "email" => $_POST["email"],
             "password" => $hashedPassword,
-            "prenom" => $_POST["prenom"],
-            "nom" => $_POST["nom"],
+            "firstname" => $_POST["firstname"],
+            "name" => $_POST["name"],
             "phone" => $_POST["phone"],
             "naissance" => $_POST["naissance"],
             "address" => $_POST["address"],
             "postal" => $_POST["postal"],
             "ville" => $_POST["ville"],
-            "sexe" => $_POST["sexe"],
             "basket" => array()
         );
 
