@@ -1,5 +1,6 @@
 <?php
 include_once("functions_user.php");
+
 /*
     This page is the landing point when a user registers. Verification of the
     inputs will be done client side on the form page.
@@ -59,6 +60,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     $hasError = false;
     $indexEntry; // The variable that will store the index entry of the user.
 
+    //Tests all fields value
     if (testMail($_POST["email"], $mailError))
         $hasError = true;
 
@@ -71,7 +73,6 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     if (testFirstName($_POST["firstname"], $firstNameError))
         $hasError = true;
 
-
     if (testVille($_POST["ville"], $villeError))
         $hasError = true;
 
@@ -81,10 +82,12 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
     if (testPhone($_POST["phone"], $phoneError))
         $hasError = true;
 
+    //If there are no errors
     if (!$hasError)
     {
         // This function provides a random salt.
         $hashedPassword = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        //Set user with new value
         $user = array(
             "email" => $_POST["email"],
             "password" => $hashedPassword,
@@ -117,8 +120,5 @@ if (isset($_POST["email"]) && isset($_POST["password"]))
         }
     }
 }
-else
-{
 
-}
 ?>
