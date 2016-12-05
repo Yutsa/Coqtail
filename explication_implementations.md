@@ -1,5 +1,5 @@
 ---
-title:  Rapport Projet de Synthèse
+title:  Rapport Projet de Web
 author: Thibert LETULLIER, Nicolas MARTIN et Édouard WILLISSECK
 geometry: margin=3cm
 ---
@@ -38,7 +38,9 @@ utilisateur grâce à son adresse mail pour obtenir le chemin
 vers le fichier de données de cet utilisateur.
 
 À l'intérieur du fichier de données se trouve un tableau
-sérialisé représentant l'adresse mail, le mot de passe crypté ainsi qu'un tableau représentant le panier de cet utilisateur.
+sérialisé représentant l'adresse mail, le mot de passe crypté et toutes les
+informations liées au profil ainsi qu'un tableau représentant le panier de cet
+utilisateur.
 
 Nous aurions pu également simplement stocker du code php dans un
 fichier avec la variable correspondant à l'utilisateur. Cependant
@@ -88,18 +90,87 @@ session pour le panier d'un utilisateur non connecté.
 Ajout/Retrait de recettes du panier
 ====================================
 
-L'ajout et le retrait d'une recette au panier se fait par un bouton sur la recette.
+L'ajout et le retrait d'une recette au panier se fait par un bouton sur la
+recette.
 
 Ce bouton affiche "Ajouter" lorsque l'article n'est pas encore dans le panier,
 et "Supprimer" lorsqu'il est déjà dans le panier.
 
-Lorsque l'utilisateur clique sur le bouton, une requête AJAX est envoyée pour ajouter l'article au panier. Le bouton change également d'état pour passer
+Lorsque l'utilisateur clique sur le bouton, une requête AJAX est envoyée pour
+ajouter l'article au panier. Le bouton change également d'état pour passer
 de "Ajouter" à "Supprimer" ou inversement.
 
 L'utilisation d'AJAX pour l'ajout au panier, et de JavaScript en général pour
-changer l'apparence du bouton permet la manipulation du panier sans avoir besoin de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).
+changer l'apparence du bouton permet la manipulation du panier sans avoir besoin
+de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).
 
-Gestion de panier qui déconne sous Safari
-==========================================
+Gestion de panier qui bug sous Safari
+======================================
 
-La gestion du panier a des problèmes lorsqu'on utilise le navigateur Safari mais nous n'avons pas réussi à en trouver la cause.
+La gestion du panier a des problèmes lorsqu'on utilise le navigateur Safari mais
+nous n'avons pas réussi à en trouver la cause.
+
+Parcours d'ingredients
+=======================
+
+La page se présente sous la forme d'un menu présentant toutes
+les sous-catégories de la catégorie principale (ici Aliment) d'un côté, et de
+l'autre l'affichage des recettes contenant l'ingredient
+(ou une de ses sous catégorie) correspondant(e).
+
+C'est un menu déroulant qui est utilisé. Lorqu'un clic est détecté, le catégorie
+affiche alors toutes ses sous-catégories directes en dessous d'elle tout en
+laissant visible les autres super-catégories. Les sous-catégories affichées sont
+aussi un menu déroulant, ce qui permet de recommencer jusqu'à arriver à la
+catégorie la plus basse (sans sous catégorie). Une marge ainsi qu'une couleur
+sont utilisées pour permettre à l'utilisateur d'avoir une bonne lisibilité dans
+le menu.
+
+Le menu est généré dynamiquement. Au debut, seule les première sous catégorie
+sont affichées. C'est en cliquant sur un ingredients que ses sous-categories
+seront chargée, grâce à une requête ajax, puis que le menu créé sera inseré à
+l'endroit souhaité. L'affichage se fait bien entendu en temps réèl.
+
+Plusieurs difficultés ont été rencontrées lors de la création de ce menu.
+
+La première, et sûrement la plus importante, était qu'il nous était impossible
+de récupérer le clic sur un menu qui avait été générer dynamiquement. Malgré des
+recherches et de nombreux test, il était pas possible de détecter le clic sur un
+sous-menu généré. La solution était pourtant très simple :
+
+Le code pour détecter le clic était le suivant :
+`$('div.collapsible-header').onclick(function() {...});`
+Alors que pour que ça marche avec des éléments dynamiques il fallait l'écrire
+avec cette syntaxe :
+`$('body').on('click', 'div.collapsible-header', function() {...});`
+
+L'ajax nous à posé quelques soucis au début mais à rapidement été pris en main
+et donc n'a pas été une difficulté lourde.
+
+La recherche d'ingredients
+===========================
+
+Sur la page de recherche vous pouvez taper dans une barre de recherche les
+ingredients que vous souhaitez ou non, des propositions sont affichées si
+le ou les ingrédients existent. Il suffit de cliquer dessus pour le selectionner.
+
+Une fois vos ingrédients séléctionnés vous pouvez cliquer sur ceux que vous ne
+souhaitez pas pour les exclure de la recherche.
+
+L'initialisation de l'autocomplétion était une des phases les plus longues de
+cette étapes. Il faut d'abord récuperer un tableau avec tous les ingrédients,
+qu'il faut ensuite traduire de php à javaScript. Il faut ensuite gérer les
+suggestions qui doivent apparaitres, et en extraire le contenues quand elle sont
+séléctionnées.
+
+Du côté php c'est la recherche approximative qui a été plus longue. En plus de
+rechercher les éléments qui correspondait, il fallait aussi tester, si aucune
+recette n'était affichée, de rechercher des recettes qui ne correspondait pas à
+1 élements près.
+
+Profil de l'utilisateur
+========================
+
+Une page est dédié au profil de l'utilisateur. Cette page contient toutes les
+informations de l'utilisateur hors mot de passe et permet la modification de
+toutes ces infomations hors adresse mail.
