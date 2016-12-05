@@ -29,7 +29,7 @@ if(isConnected())
         $userData["postal"] = $_POST["postal"];
         $userData["address"] = $_POST["address"];
         $userData["naissance"] = $_POST["naissance"];
-        print_r($_POST["naissance"]);
+        $userData["sexe"] = $_POST["sexe"];
 
         $userDataFileCopy = fopen($userDataFilePath . "copy", "a+");
         fwrite($userDataFileCopy, serialize($userData));
@@ -79,6 +79,17 @@ if(isConnected())
     {
         $naissance = $userData["naissance"];
     }
+    if (!empty($userData["sexe"]))
+    {
+        if ($userData["sexe"] == "homme")
+        {
+            $homme = true;
+        }
+        else
+        {
+            $homme = false;
+        }
+    }
 }
 else
 {
@@ -124,9 +135,9 @@ else
                         </div>
                         <div class="input-field col s4">
                             <p>
-                                <input name="sexe" type="radio" id="homme" value="homme"/>
+                                <input name="sexe" type="radio" id="homme" value="homme" checked="<?php echo $homme ? "true" : "false";  ?>"/>
                                 <label for="homme">Homme</label>
-                                <input name="sexe" type="radio" id="femme" value="femme"/>
+                                <input name="sexe" type="radio" id="femme" value="femme" checked="<?php echo !$homme ? "true" : "false"; ?>"/>
                                 <label for="femme">Femme</label>
                             </p>
                         </div>
