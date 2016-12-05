@@ -7,6 +7,12 @@ geometry: margin=3cm
 Rapport projet Web
 ----------------------------------------
 
+Installation du site
+=====================
+
+Coller le dossier `Projet` dans EasyPHP.
+
+
 Processus d'inscription
 =======================
 
@@ -174,8 +180,8 @@ toutes ces infomations hors adresse mail.
 Fonctionnement du site
 =======================
 
-Le site est composée de plusieurs pages toutes accessibles par une barre de 
-navigation. Elle est dynamique, ce qui signifie que seules les pages utiles 
-sont affichées (pas de page connexion quand l'utilisateur l'est déjà). 
+Le site est composée de plusieurs pages toutes accessibles par une barre de
+navigation. Elle est dynamique, ce qui signifie que seules les pages utiles
+sont affichées (pas de page connexion quand l'utilisateur l'est déjà).
 Pour revenir à la page d'accueil, il suffit de cliquer sur "Coq'tail" en
 haut à gauche.
