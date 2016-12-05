@@ -19,7 +19,7 @@ if(isConnected())
     $email = $userData["email"];
     $password = $userData["password"];
 
-    if(isset($_POST["prenom"])) 
+    if(isset($_POST["prenom"]))
     {
         //Change with new value
         $userData["prenom"] = $_POST["prenom"];
@@ -28,6 +28,8 @@ if(isConnected())
         $userData["phone"] = $_POST["phone"];
         $userData["postal"] = $_POST["postal"];
         $userData["address"] = $_POST["address"];
+        $userData["naissance"] = $_POST["naissance"];
+        print_r($_POST["naissance"]);
 
         $userDataFileCopy = fopen($userDataFilePath . "copy", "a+");
         fwrite($userDataFileCopy, serialize($userData));
@@ -132,7 +134,7 @@ else
                     <div class="row">
                         <div class="input-field col s6">
                             <p for="nom">Date de naissance : </p>
-                            <input id="naissance" type="date" class="datepicker" value="<?php echo $naissance ?>" />
+                            <input id="naissance" type="date" class="datepicker" name="naissance" value="<?php echo $naissance ?>" />
                         </div>
                         <div class="input-field col s6">
                             <p for="nom">Téléphone : </p>
@@ -185,7 +187,10 @@ else
 
         </div>
 
+        <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>
+        <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
 
     </body>
 </html>
