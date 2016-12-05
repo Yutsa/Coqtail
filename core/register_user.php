@@ -53,68 +53,33 @@ function storeUserData($userDataFilePath, $userData)
     fclose($userDataFile);
 }
 
+include_once("functions_user.php");
 
 if (isset($_POST["email"]) && isset($_POST["password"]))
 {
     $hasError = false;
     $indexEntry; // The variable that will store the index entry of the user.
-
-    if(empty($_POST["email"]))
-    {
-        $mailRequired = "L'adresse mail est obligatoire";
-        $hasError = true;
-    }
-    else if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/", $_POST["email"]))
-    {
-        $validMail = "L'adresse mail n'est pas valide";
-        $hasError = true;
-    }
-
-    if(empty($_POST["password"]))
-    {
-        $passwordRequired = "Le mot de passe est obligatoire.";
-        $hasError = true;
-    }
-    else if(strlen($_POST["password"]) < 4)
-    {
-        $passwordTooShort = "Le mot de passe est trop cours";
-        $hasError = true;
-    }
-
-    if (!empty($_POST['nom']) &&
-        preg_match("/[0-9]+/", $_POST["nom"]))
-    {
-        $nomError = "Nom incorrect.";
-        $hasError = true;
-    }
-
-    if (!empty($_POST['prenom']) &&
-        preg_match("/[0-9]+/", $_POST["prenom"]))
-    {
-        $prenomError = "Prénom incorrect.";
-        $hasError = true;
-    }
     
-    if (!empty($_POST['phone']) &&
-        !preg_match("/^0[0-9]{9}$/", $_POST["phone"]))
-    {
-        $phoneError = "Numéro de téléphone incorrect.";
+    if (testMail($_POST["email"], $mailError))
         $hasError = true;
-    }
     
-    if (!empty($_POST['postal']) &&
-        !preg_match("/[0-9]{5}/", $_POST["postal"]))
-    {
-        $postalError = "Code postal incorrect.";
+    if (testPassword($_POST["password"], $passwordError))
         $hasError = true;
-    }
     
-    if (!empty($_POST['ville']) &&
-        !preg_match("/[a-z A-Z]+$/", $_POST["ville"]))
-    {
-        $villeError = "Ville incorrecte.";
+    if (testName($_POST["name"], $nameError))
         $hasError = true;
-    }
+    
+    if (testFirstName($_POST["firstname"], $firstNameError))
+        $hasError = true;
+    
+    if (testVille($_POST["ville"], $villeError))
+        $hasError = true;
+    
+    if (testPostal($_POST["postal"], $postalError))
+        $hasError = true;
+    
+    if (testPhone($_POST["phone"], $phoneError))
+        $hasError = true;
 
     if (!$hasError)
     {
