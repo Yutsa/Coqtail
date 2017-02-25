@@ -1,0 +1,6 @@
+*.zip
+*.pdf
+*.orig
+.DS_Store
+data/
+npm-debug.log
