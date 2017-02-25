@@ -1,5 +1,5 @@
 <?php
-
+include_once("../config/config.inc.php");
 include_once("../core/functions.inc.php");
 include_once("../core/donnees.inc.php");
 include_once("../core/functions_user.php");
@@ -49,7 +49,7 @@ if(isConnected())
         if (testPhone($_POST["phone"], $phoneError))
             $hasError = true;
 
-        //If there is no error 
+        //If there is no error
         if (!$hasError)
         {
             //Change userdata with new value
@@ -80,7 +80,7 @@ if(isConnected())
                 $userData["password"] = $newPassword;
                 $change = 'Vos infomations ont bien été changées.';
             }
-            else 
+            else
             {
                 $passwordError = "Mot de passe invalide";
             }
@@ -272,6 +272,7 @@ else
             </div>
         </div>
 
+        <script type="text/javascript" src="../config/config.js"></script>
         <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>

@@ -1,5 +1,6 @@
 <?php
 //session_start();
+include_once("../config/config.inc.php");
 include_once(realpath(dirname(__FILE__) .
                       "/../core/functions_ingredient_menu.inc.php"));
 include_once(realpath(dirname(__FILE__) .
@@ -14,7 +15,7 @@ include_once(realpath(dirname(__FILE__) .
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Ne fonctionnera pas si le projet n'est pas dans le dossier
 "Projet" sur les ordinateurs de la fac. -->
-        <link href="/Projet/static/css/style.css" rel="stylesheet">
+        <link href="<?php ROOT_URI . "/static/css/style.css"?>" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
 
@@ -29,7 +30,7 @@ include_once(realpath(dirname(__FILE__) .
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="../static/js/search.js"></script>
-        <script type="text/javascript" src="../static/js/jquery.bind-first-0.2.2.min.js"></script>       
+        <script type="text/javascript" src="../static/js/jquery.bind-first-0.2.2.min.js"></script>
 
     </head>
     <body>
@@ -47,13 +48,14 @@ include_once(realpath(dirname(__FILE__) .
 
                 </ul>
             </div>
-            
+
             <div class="col s12" id="displaySearch">
 
             </div>
         </div>
     </body>
 
+    <script type="text/javascript" src="../config/config.js"></script>
     <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
 <!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

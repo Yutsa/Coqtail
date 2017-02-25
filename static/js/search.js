@@ -9,7 +9,7 @@ $(function initAutoComplete() {
 
             //Delete input value
             ui.item.value = "";
-        } 
+        }
     });
 });
 
@@ -17,7 +17,7 @@ $(function initAutoComplete() {
 //Get all the element need to autocomplete from php array
 $('document').ready(function() {
     //Get url of ajax file
-    var url = "/Projet/core/ajax_get_all_sub_cat.php";
+    var url = ROOT_URI + "/core/ajax_get_all_sub_cat.php";
 
     //Ajax request to get ingredients array
     $.post(url, {}, function(data) {
@@ -25,7 +25,7 @@ $('document').ready(function() {
         //Split return array
         data = [data.split(":")];
 
-        //Init javascript array 
+        //Init javascript array
         for (var i = 0; i < data[0].length; i++)
         {
             availableTags.push({value : data[0][i]});
@@ -62,7 +62,7 @@ $('document').ready(function() {
 
         //Iterate though <li> and check if it has add or remove class
         $(this).children().each(function(index, element) {
-            //Initialize 2 array 
+            //Initialize 2 array
 
             //One with the add ingredients
             if (element.className === 'chip add green' )
@@ -83,13 +83,11 @@ $('document').ready(function() {
         //console.log(removeElement);
 
         //Ajax request for display recite match with arrays
-        var url = "/Projet/core/ajax_get_search_cat.php";
+        var url = ROOT_URI + "/core/ajax_get_search_cat.php";
 
-        $.post(url, {addElement : addElement, removeElement: removeElement}, function(data) { 
+        $.post(url, {addElement : addElement, removeElement: removeElement}, function(data) {
             //Set result in a div
             $('div#displaySearch').html(data);
         });
     });
 });
-
-

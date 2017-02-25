@@ -1,5 +1,4 @@
 <?php
-
 /*
 * This is the file to include to show the menu.
 * The options to connect or register shoudln't appear when logged in.
@@ -10,7 +9,7 @@
 //TODO: Show a log out button when logged in.
 
 $connected = isset($_SESSION["userDataFileName"]);
-define('ROOT_URI', "/Projet");
+
 
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 //session_start();
+include_once("config/config.inc.php");
 include_once("core/basket.inc.php");
 
 include_once("core/donnees.inc.php");

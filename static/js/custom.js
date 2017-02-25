@@ -29,7 +29,7 @@ $(document).ready(function(){
     category, using ajax.
     */
     $('body').on('click', 'div.collapsible-header', function() {
-        var urlDisplaySubcategories = '/Projet/core/ajax_display_subcategories.php';
+        var urlDisplaySubcategories = ROOT_URI + '/core/ajax_display_subcategories.php';
 
         var nextCollapsible = $(this).next();
         var categorie = $(this).text();
@@ -45,7 +45,7 @@ $(document).ready(function(){
             });
         });
 
-        var urlDisplayRecipes = '/Projet/core/ajax_display_recette.php';
+        var urlDisplayRecipes = ROOT_URI + '/core/ajax_display_recette.php';
         $.post(urlDisplayRecipes, { cat : categorie }, function(data) {
             $("div#recette").html(data);
         });
@@ -73,7 +73,7 @@ function sendAjaxModifyBasket(action, cocktailButton)
     var titre = getTitle(cocktailButton);
     titre = titre.trim();
 
-    var url = "/Projet/core/basket.inc.php";
+    var url = ROOT_URI + "/core/basket.inc.php";
     console.log(titre);
     $.post(url, {titre: titre, action: action}, function(data) {
         console.log(data);

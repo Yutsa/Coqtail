@@ -112,15 +112,15 @@ L'utilisation d'AJAX pour l'ajout au panier, et de JavaScript en général pour
 changer l'apparence du bouton permet la manipulation du panier sans avoir besoin
 de recharger la page, ce qui nuirait à l'UX (expérience utilisateur).
 
-Parcours d'ingredients
-=======================
+Parcours d'ingrédients
+======================
 
 La page se présente sous la forme d'un menu présentant toutes
 les sous-catégories de la catégorie principale (ici Aliment) d'un côté, et de
-l'autre l'affichage des recettes contenant l'ingredient
+l'autre l'affichage des recettes contenant l'ingrédient
 (ou une de ses sous catégorie) correspondant(es).
 
-C'est un menu déroulant qui est utilisé. Lorqu'un clic est détecté, le catégorie
+C'est un menu déroulant qui est utilisé. Lorsqu'un clic est détecté, le catégorie
 affiche alors toutes ses sous-catégories directes en dessous d'elle tout en
 laissant visible les autres super-catégories. Les sous-catégories affichées sont
 aussi un menu déroulant, ce qui permet de recommencer jusqu'à arriver à la
@@ -128,8 +128,8 @@ catégorie la plus basse (sans sous catégorie). Une marge ainsi qu'une couleur
 sont utilisées pour permettre à l'utilisateur d'avoir une bonne lisibilité dans
 le menu.
 
-Le menu est généré dynamiquement. Au debut, seule les première sous catégorie
-sont affichées. C'est en cliquant sur un ingredients que ses sous-categories
+Le menu est généré dynamiquement. Au début, seule les première sous catégorie
+sont affichées. C'est en cliquant sur un ingrédients que ses sous-catégories
 seront chargée, grâce à une requête ajax, puis que le menu créé sera inseré à
 l'endroit souhaité. L'affichage se fait bien entendu en temps réèl.
 
@@ -149,12 +149,12 @@ avec cette syntaxe :
 L'ajax nous à posé quelques soucis au début mais à rapidement été pris en main
 et donc n'a pas été une difficulté lourde.
 
-La recherche d'ingredients
+La recherche d'ingrédients
 ===========================
 
 Sur la page de recherche vous pouvez taper dans une barre de recherche les
-ingredients que vous souhaitez ou non, des propositions sont affichées si
-le ou les ingrédients existent. Il suffit de cliquer dessus pour le selectionner.
+ingrédients que vous souhaitez ou non, des propositions sont affichées si
+le ou les ingrédients existent. Il suffit de cliquer dessus pour le sélectionner.
 
 Une fois vos ingrédients séléctionnés vous pouvez cliquer sur ceux que vous ne
 souhaitez pas pour les exclure de la recherche.
@@ -162,7 +162,7 @@ souhaitez pas pour les exclure de la recherche.
 L'initialisation de l'autocomplétion était une des phases les plus longues de
 cette étapes. Il faut d'abord récupérer un tableau avec tous les ingrédients,
 qu'il faut ensuite traduire de php à JavaScript. Il faut ensuite gérer les
-suggestions qui doivent apparaitres, et en extraire le contenues quand elle sont
+suggestions qui doivent apparaîtres, et en extraire le contenues quand elle sont
 séléctionnées.
 
 Du côté php c'est la recherche approximative qui a été plus longue. En plus de
@@ -175,7 +175,7 @@ Profil de l'utilisateur
 
 Une page est dédié au profil de l'utilisateur. Cette page contient toutes les
 informations de l'utilisateur hors mot de passe et permet la modification de
-toutes ces infomations hors adresse mail.
+toutes ces informations hors adresse mail.
 
 Fonctionnement du site
 =======================

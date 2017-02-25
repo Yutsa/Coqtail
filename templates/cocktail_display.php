@@ -1,5 +1,7 @@
 <?php
 //session_start();
+
+include_once("../config/config.inc.php");
 include_once(realpath(dirname(__FILE__) .
                       "/../core/functions_ingredient_menu.inc.php"));
 include_once(realpath(dirname(__FILE__) .
@@ -15,7 +17,7 @@ include_once("../core/basket.inc.php");
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Ne fonctionnera pas si le projet n'est pas dans le dossier
 "Projet" sur les ordinateurs de la fac. -->
-        <link href="/Projet/static/css/style.css" rel="stylesheet">
+        <link href="<?php echo ROOT_URI . "/static/css/style.css"?>" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"  media="screen,projection"/>
 
@@ -41,6 +43,7 @@ include_once("../core/basket.inc.php");
             </div>
         </div>
 
+        <script type="text/javascript" src="../config/config.js"></script>
         <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>

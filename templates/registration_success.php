@@ -1,4 +1,5 @@
 <?php
+include_once("../config/config.inc.php");
 include_once("../core/basket.inc.php");
 ?>
 <!DOCTYPE html>
@@ -29,6 +30,7 @@ include_once("../core/basket.inc.php");
             </div>
         </main>
 
+        <script type="text/javascript" src="../config/config.js"></script>
         <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         <script src="../static/js/custom.js" charset="utf-8"></script>
